@@ -15,7 +15,7 @@ const SearchBar = () => {
 
   return (
     <div className="bg-[#F5F5F3] relative ">
-      <Container className="py-6  flex md:justify-between gap-x-3 px-3 md:px-0 items-center relative">
+      <Container className="py-3 md:py-6  flex md:justify-between gap-x-3 px-3 md:px-0  items-center relative">
         <div
           onClick={() => setShow(!show)}
           className="category  flex md:gap-x-2.5 cursor-pointer"
@@ -395,7 +395,7 @@ const SearchBar = () => {
               <div className="up ">
                 <CustomBtn
                   btnText="My Account"
-                  className="text-white bg-gray-400 w-[200px] py-4"
+                  className="text-white bg-[#6B7280] w-[200px] py-4"
                 />
               </div>
               <div className="down ">
