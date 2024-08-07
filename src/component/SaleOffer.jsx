@@ -1,26 +1,22 @@
-import React from 'react'
-import Container from '../component/layer/Container'
-import ad1 from '/Ad_1.png'
-import ad2 from '/Ad_2.png'
-import ad3 from '/Ad_3.png'
-import Image from './layer/Image'
+import React from "react";
+import Container from "../component/layer/Container";
+import ad1 from "/SaleOffer/Ad1.png";
+import ad2 from "/SaleOffer/Ad2.png";
+import ad3 from "/SaleOffer/Ad3.png";
+import Image from "./layer/Image";
+import { useNavigate } from "react-router-dom";
 
 const SaleOffer = () => {
-  return (
-    <Container className='pt-[10.875rem] '>
-        <div className="main flex justify-between">
-            <div className="left w-[48.75rem] h-[48.75rem] ">
-                <Image src={ad1} />
-            </div>
-            <div className="right flex flex-col justify-between">
-                <div className="up w-[48.75rem] h-[23.125rem] ">
-                <Image src={ad2} /></div>
-                <div className="down w-[48.75rem] h-[23.125rem] ">
-                <Image src={ad3} /></div>
-            </div>
-        </div>
-    </Container>
-  )
-}
 
-export default SaleOffer
+  let navigate = useNavigate()
+
+  return (
+    <Container className="  md:pt-[10.875rem] md:h-[780px] grid gap-3 md:gap-10  grid-cols-2 grid-rows-2">
+      <img src={ad1} className="object-cover h-full w-full row-span-2 cursor-pointer" onClick={()=> navigate("/shop")}/>
+      <img src={ad2} className="object-cover h-full w-full cursor-pointer" onClick={()=> navigate("/about")}/>
+      <img src={ad3} className="object-cover h-full w-full cursor-pointer" onClick={()=> navigate("/contacts")}/>
+    </Container>
+  );
+};
+``;
+export default SaleOffer;

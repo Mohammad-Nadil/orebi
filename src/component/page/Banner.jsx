@@ -86,6 +86,37 @@ const Banner = () => {
           ),
         },
       },
+      {
+        breakpoint: 1025,
+        settings: {
+          appendDots: (dots) => (
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "10%",
+                transform: "translateY(-50%)",
+                zIndex: "1000",
+                width: "auto",
+                height: "120px",
+              }}
+            >
+              <ul className=" flex flex-col justify-between h-[120px] "> {dots} </ul>
+            </div>
+          ),
+          customPaging: (i) => (
+            <div
+              className={`w-[25px] h-[25px] font-DM text-[10px]  border-r-2 flex items-center ${
+                active == i
+                  ? " text-t-primary-active border-t-primary-active"
+                  : " text-transparent border-white "
+              } `}
+            >
+              0{i + 1}
+            </div>
+          ),
+        },
+      },
     ],
   };
 

@@ -27,14 +27,14 @@ const Navbar = () => {
       <nav className="bg-gray-200 ">
         <Container className=" py-4 md:py-8 px-3 md:px-0  flex justify-end gap-x-3 md:gap-x-0 md:justify-center  bg-gray-200">
           <Image
-            className=" cursor-pointer absolute top-1/2 -translate-y-1/2 left-3 md:left-0 "
+            className=" cursor-pointer absolute top-1/2 -translate-y-1/2 left-3 xl:left-0  md:left-3"
             href="/"
             src={logo}
             alt="/Logo.png"
           />
 
           
-            <ul className={`transition-all duration-500 md:static gap-x-10  flex absolute left-0 top-full md:flex-row flex-col md:justify-center md:bg-transparent w-full px-3 md:px-0 z-20 bg-inherit ${show?" translate-y-0 ":" top-[0px]  -translate-y-full"} `}>
+            <ul className={`transition-all duration-500 md:static gap-x-10  flex absolute left-0 top-full md:flex-row flex-col md:justify-center md:bg-transparent w-full px-3 md:px-0 z-20 bg-inherit ${show?"opacity-100 visible ":" opacity-0 invisible"} `}>
               <Li className="text-t-primary-active" liText="Home" href="/" />
               <Li liText="Shop" href="/Shop" />
               <Li liText="About" href="/About" />
