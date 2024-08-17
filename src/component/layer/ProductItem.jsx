@@ -19,7 +19,7 @@ const ProductItem = ({ className, src, pName, price, color, offer, offerEye }) =
   let [OfferShow , setOfferShow] = useState(offerEye)
 
   return (
-    <div className={` w-[23.125rem] ${className}`}>
+    <div className={` w-[370px] ${className}`}>
       <div className="image w-full h-[23.125rem] relative group">
         <button className={` absolute top-4 left-4 font-DM font-bold text-sm text-white bg-black ${OfferShow?"py-2 px-8":"p-0"} `}>
           {offer}
