@@ -84,8 +84,7 @@ const Arrivals = () => {
               pName="Basic Crew Neck Tee"
               price="$44.00"
               color="black"
-              offer="new"
-              offerEye={true}
+              offerEye={false}
               className="!w-full px-5"
             />
             <ProductItem

@@ -7,12 +7,13 @@ import Arrivals from '../Arrivals'
 import BestSellers from '../BestSellers'
 import SpecialOffers from '../SpecialOffers'
 import Add_2 from '../Add_2'
+import Intro2 from '../Intro2'
 
 const Home = () => {
   return (
     <>
       <Banner/>
-      <Image src={policy1} imageClass='mx-auto' />
+      <Intro2/>
       <SaleOffer/>
       <Arrivals/>
       <BestSellers/>
