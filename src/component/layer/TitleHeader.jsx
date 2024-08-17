@@ -1,10 +1,11 @@
 import React from "react";
 
-const TitleHeader = ({ headerText ,className}) => {
+const TitleHeader = ({ headerText, className }) => {
   return (
     <h2
-      className={`text-t-primary-active 
-         text-[2.4375rem] font-DM font-bold ${className}`}>
+      className={`text-primary  
+         text-[2.4375rem] font-DM font-bold ${className}`}
+    >
       {headerText}
     </h2>
   );

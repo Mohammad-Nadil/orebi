@@ -40,7 +40,7 @@ const Banner = () => {
       <div
         className={`w-[30px] h-[30px] font-DM text-[10px]  border-r-2 flex items-center ${
           active == i
-            ? " text-t-primary-active border-t-primary-active"
+            ? " text-primary  border-primary "
             : " text-transparent border-white "
         } `}
       >
@@ -67,17 +67,14 @@ const Banner = () => {
                 height: "30px",
               }}
             >
-              <ul className=" flex  justify-between h-[120px] ">
-                {" "}
-                {dots}{" "}
-              </ul>
+              <ul className=" flex  justify-between h-[120px] "> {dots} </ul>
             </div>
           ),
           customPaging: (i) => (
             <div
               className={`w-[18px] h-[20px] font-DM text-[10px]  border-b-2 flex justify-center${
                 active == i
-                  ? " text-t-primary-active border-t-primary-active"
+                  ? " text-primary  border-primary "
                   : " text-transparent border-white "
               } `}
             >
@@ -101,14 +98,17 @@ const Banner = () => {
                 height: "120px",
               }}
             >
-              <ul className=" flex flex-col justify-between h-[120px] "> {dots} </ul>
+              <ul className=" flex flex-col justify-between h-[120px] ">
+                {" "}
+                {dots}{" "}
+              </ul>
             </div>
           ),
           customPaging: (i) => (
             <div
               className={`w-[25px] h-[25px] font-DM text-[10px]  border-r-2 flex items-center ${
                 active == i
-                  ? " text-t-primary-active border-t-primary-active"
+                  ? " text-primary  border-primary "
                   : " text-transparent border-white "
               } `}
             >

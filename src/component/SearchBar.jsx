@@ -21,22 +21,20 @@ const SearchBar = () => {
           className="category  flex md:gap-x-2.5 cursor-pointer"
         >
           <FaBarsStaggered />
-          <p className="font-DM text-sm text-t-primary-active  hidden md:block">
+          <p className="font-DM text-sm text-primary   hidden md:block">
             Shop by Category
           </p>
         </div>
 
         {show && (
-          <ul className="catddm absolute top-full left-0 w-[16.4375rem] bg-t-primary-active z-10 ">
+          <ul className="catddm absolute top-full left-0 w-[16.4375rem] bg-primary  z-[9999] ">
             <Li
               liText="Accesories"
               className=" text-white/70 hover:text-white py-4 px-5 hover:pl-[1.875rem]  w-full  border-b border-[#2D2D2D] group"
             >
               <div className="hidden  group-hover:flex absolute top-0 left-full z-10 bg-white h-full px-10 gap-x-12 ">
                 <ul className="w-14 flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
-                    Phones
-                  </p>
+                  <p className="font-DM font-bold text-primary  pb-2">Phones</p>
                   <DDli liText="phone 1" />
                   <DDli liText="phone 2" />
                   <DDli liText="phone 3" />
@@ -46,7 +44,7 @@ const SearchBar = () => {
                   <DDli liText="phone 7" />
                 </ul>
                 <ul className="w-[5.5rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Computers
                   </p>
                   <DDli liText="Computer 1" />
@@ -58,7 +56,7 @@ const SearchBar = () => {
                   <DDli liText="Computer 7" />
                 </ul>
                 <ul className="w-[7.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Smart watches
                   </p>
                   <DDli liText="Smart watch 1" />
@@ -70,7 +68,7 @@ const SearchBar = () => {
                   <DDli liText="Smart watch 7" />
                 </ul>
                 <ul className="w-[4.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Cameras
                   </p>
                   <DDli liText="Camera 1" />
@@ -89,9 +87,7 @@ const SearchBar = () => {
             >
               <div className="hidden  group-hover:flex absolute top-0 left-full z-10 bg-white h-full px-10 gap-x-12 ">
                 <ul className="w-14 flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
-                    Phones
-                  </p>
+                  <p className="font-DM font-bold text-primary  pb-2">Phones</p>
                   <DDli liText="phone 1" />
                   <DDli liText="phone 2" />
                   <DDli liText="phone 3" />
@@ -101,7 +97,7 @@ const SearchBar = () => {
                   <DDli liText="phone 7" />
                 </ul>
                 <ul className="w-[5.5rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Computers
                   </p>
                   <DDli liText="Computer 1" />
@@ -113,7 +109,7 @@ const SearchBar = () => {
                   <DDli liText="Computer 7" />
                 </ul>
                 <ul className="w-[7.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Smart watches
                   </p>
                   <DDli liText="Smart watch 1" />
@@ -125,7 +121,7 @@ const SearchBar = () => {
                   <DDli liText="Smart watch 7" />
                 </ul>
                 <ul className="w-[4.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Cameras
                   </p>
                   <DDli liText="Camera 1" />
@@ -137,7 +133,7 @@ const SearchBar = () => {
                   <DDli liText="Camera 7" />
                 </ul>
                 <ul className="w-[4.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Cameras
                   </p>
                   <DDli liText="Camera 1" />
@@ -156,9 +152,7 @@ const SearchBar = () => {
             >
               <div className="hidden  group-hover:flex absolute top-0 left-full z-10 bg-white h-full px-10 gap-x-12 ">
                 <ul className="w-14 flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
-                    Phones
-                  </p>
+                  <p className="font-DM font-bold text-primary  pb-2">Phones</p>
                   <DDli liText="phone 1" />
                   <DDli liText="phone 2" />
                   <DDli liText="phone 3" />
@@ -168,7 +162,7 @@ const SearchBar = () => {
                   <DDli liText="phone 7" />
                 </ul>
                 <ul className="w-[5.5rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Computers
                   </p>
                   <DDli liText="Computer 1" />
@@ -180,7 +174,7 @@ const SearchBar = () => {
                   <DDli liText="Computer 7" />
                 </ul>
                 <ul className="w-[7.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Smart watches
                   </p>
                   <DDli liText="Smart watch 1" />
@@ -199,9 +193,7 @@ const SearchBar = () => {
             >
               <div className="hidden  group-hover:flex absolute top-0 left-full z-10 bg-white h-full px-10 gap-x-12 ">
                 <ul className="w-14 flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
-                    Phones
-                  </p>
+                  <p className="font-DM font-bold text-primary  pb-2">Phones</p>
                   <DDli liText="phone 1" />
                   <DDli liText="phone 2" />
                   <DDli liText="phone 3" />
@@ -211,7 +203,7 @@ const SearchBar = () => {
                   <DDli liText="phone 7" />
                 </ul>
                 <ul className="w-[5.5rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Computers
                   </p>
                   <DDli liText="Computer 1" />
@@ -223,7 +215,7 @@ const SearchBar = () => {
                   <DDli liText="Computer 7" />
                 </ul>
                 <ul className="w-[7.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Smart watches
                   </p>
                   <DDli liText="Smart watch 1" />
@@ -235,7 +227,7 @@ const SearchBar = () => {
                   <DDli liText="Smart watch 7" />
                 </ul>
                 <ul className="w-[4.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Cameras
                   </p>
                   <DDli liText="Camera 1" />
@@ -254,9 +246,7 @@ const SearchBar = () => {
             >
               <div className="hidden  group-hover:flex absolute top-0 left-full z-10 bg-white h-full px-10 gap-x-12 ">
                 <ul className="w-14 flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
-                    Phones
-                  </p>
+                  <p className="font-DM font-bold text-primary  pb-2">Phones</p>
                   <DDli liText="phone 1" />
                   <DDli liText="phone 2" />
                   <DDli liText="phone 3" />
@@ -266,7 +256,7 @@ const SearchBar = () => {
                   <DDli liText="phone 7" />
                 </ul>
                 <ul className="w-[5.5rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Computers
                   </p>
                   <DDli liText="Computer 1" />
@@ -278,7 +268,7 @@ const SearchBar = () => {
                   <DDli liText="Computer 7" />
                 </ul>
                 <ul className="w-[7.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Smart watches
                   </p>
                   <DDli liText="Smart watch 1" />
@@ -290,7 +280,7 @@ const SearchBar = () => {
                   <DDli liText="Smart watch 7" />
                 </ul>
                 <ul className="w-[4.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Cameras
                   </p>
                   <DDli liText="Camera 1" />
@@ -309,9 +299,7 @@ const SearchBar = () => {
             >
               <div className="hidden  group-hover:flex absolute top-0 left-full z-10 bg-white h-full px-10 gap-x-12 ">
                 <ul className="w-14 flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
-                    Phones
-                  </p>
+                  <p className="font-DM font-bold text-primary  pb-2">Phones</p>
                   <DDli liText="phone 1" />
                   <DDli liText="phone 2" />
                   <DDli liText="phone 3" />
@@ -321,7 +309,7 @@ const SearchBar = () => {
                   <DDli liText="phone 7" />
                 </ul>
                 <ul className="w-[5.5rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Computers
                   </p>
                   <DDli liText="Computer 1" />
@@ -333,7 +321,7 @@ const SearchBar = () => {
                   <DDli liText="Computer 7" />
                 </ul>
                 <ul className="w-[7.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Smart watches
                   </p>
                   <DDli liText="Smart watch 1" />
@@ -345,7 +333,7 @@ const SearchBar = () => {
                   <DDli liText="Smart watch 7" />
                 </ul>
                 <ul className="w-[4.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Cameras
                   </p>
                   <DDli liText="Camera 1" />
@@ -357,7 +345,7 @@ const SearchBar = () => {
                   <DDli liText="Camera 7" />
                 </ul>
                 <ul className="w-[4.375rem] flex flex-col gap-y-3 justify-center">
-                  <p className="font-DM font-bold text-t-primary-active pb-2">
+                  <p className="font-DM font-bold text-primary  pb-2">
                     Cameras
                   </p>
                   <DDli liText="Camera 1" />
@@ -395,7 +383,7 @@ const SearchBar = () => {
               <div className="up ">
                 <CustomBtn
                   btnText="My Account"
-                  className="text-white bg-[#6B7280] w-[200px] py-4"
+                  className="text-white bg-[#787878] w-[200px] py-4"
                 />
               </div>
               <div className="down ">
@@ -416,10 +404,10 @@ const SearchBar = () => {
                 <div className="img flex items-center gap-x-5 ">
                   <Image className=" w-20 h-20 bg-[#D8D8D8]" />
                   <div className="text flex flex-col">
-                    <h1 className=" font-DM font-bold text-sm text-t-primary-active">
+                    <h1 className=" font-DM font-bold text-sm text-primary ">
                       Black Smart Watch
                     </h1>
-                    <p className=" font-DM font-bold text-sm text-t-primary-active">
+                    <p className=" font-DM font-bold text-sm text-primary ">
                       $44.00
                     </p>
                   </div>
@@ -431,9 +419,7 @@ const SearchBar = () => {
               <div className="price font-DM leading-6 text-t-primary">
                 <p>
                   Subtotal:
-                  <span className="text-t-primary-active font-bold">
-                    $44.00
-                  </span>
+                  <span className="text-primary  font-bold">$44.00</span>
                 </p>
               </div>
               <div className="btn flex justify-center gap-x-5">

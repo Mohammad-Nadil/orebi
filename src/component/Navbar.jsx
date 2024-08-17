@@ -33,15 +33,17 @@ const Navbar = () => {
             alt="/Logo.png"
           />
 
-          
-            <ul className={`transition-all duration-500 md:static gap-x-10  flex absolute left-0 top-full md:flex-row flex-col md:justify-center md:bg-transparent w-full px-3 md:px-0 z-20 bg-inherit ${show?"opacity-100 visible ":" opacity-0 invisible"} `}>
-              <Li className="text-t-primary-active" liText="Home" href="/" />
-              <Li liText="Shop" href="/Shop" />
-              <Li liText="About" href="/About" />
-              <Li liText="Contacts" href="/Contacts" />
-              <Li liText="Journal" href="/Journal" />
-            </ul>
-          
+          <ul
+            className={`transition-all duration-500 md:static gap-x-10  flex absolute left-0 top-full md:flex-row flex-col md:justify-center md:bg-transparent w-full px-3 md:px-0 z-20 bg-inherit ${
+              show ? "opacity-100 visible " : " opacity-0 invisible"
+            } `}
+          >
+            <Li className= "!text-primary " liText="Home" href="/" />
+            <Li liText="Shop" href="/Shop" />
+            <Li liText="About" href="/About" />
+            <Li liText="Contacts" href="/Contacts" />
+            <Li liText="Journal" href="/Journal" />
+          </ul>
 
           <div className="account flex gap-x-3 md:gap-x-10 md:hidden">
             <div className="left flex md:gap-x-2.5">
