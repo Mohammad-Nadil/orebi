@@ -2,16 +2,16 @@ import Container from "./layer/Container";
 import React from "react";
 import TitleHeader from "./layer/TitleHeader";
 import ProductItem from "./layer/ProductItem";
-import p1 from "/Arrivals/productItem1.png";
-import p2 from "/Arrivals/productItem2.png";
-import p3 from "/Arrivals/productItem3.png";
-import p4 from "/Arrivals/productItem4.png";
+import p1 from "/Arrivals/productItem9.png";
+import p2 from "/Arrivals/productItem10.png";
+import p3 from "/Arrivals/productItem11.png";
+import p4 from "/Arrivals/productItem12.png";
 
-const Arrivals = () => {
+const SpecialOffers = () => {
   return (
     <>
       <Container className="mt-32">
-        <TitleHeader headerText="New Arrivals" />
+        <TitleHeader headerText="Special Offers" />
       </Container>
       <Container className="flex gap-x-10 flex-wrap">
         <ProductItem
@@ -50,4 +50,4 @@ const Arrivals = () => {
   );
 };
 
-export default Arrivals;
+export default SpecialOffers;

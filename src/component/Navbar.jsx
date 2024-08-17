@@ -38,7 +38,7 @@ const Navbar = () => {
               show ? "opacity-100 visible " : " opacity-0 invisible"
             } `}
           >
-            <Li className= "!text-primary " liText="Home" href="/" />
+            <Li className="!text-primary " liText="Home" href="/" />
             <Li liText="Shop" href="/Shop" />
             <Li liText="About" href="/About" />
             <Li liText="Contacts" href="/Contacts" />
