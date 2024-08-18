@@ -1,5 +1,5 @@
 import Container from "./layer/Container";
-import React from "react";
+import React, { useState } from "react";
 import TitleHeader from "./layer/TitleHeader";
 import ProductItem from "./layer/ProductItem";
 import p1 from "/Arrivals/productItem1.png";
@@ -14,7 +14,7 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      className=" absolute top-1/2 -translate-y-1/2 left-0 translate-x-1/3 z-50 h-16 w-16 rounded-full bg-[#979797] grid place-content-center text-white"
+      className=" absolute top-1/2 -translate-y-1/2 left-0 translate-x-1/3 z-50 h-10 lg:h-16 w-10 lg:w-16 rounded-full bg-[#979797] grid place-content-center text-white"
       onClick={onClick}
     >
       <FaLongArrowAltLeft />
@@ -25,7 +25,7 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      className=" absolute top-1/2 -translate-y-1/2 right-0 -translate-x-1/3 z-50 h-16 w-16 rounded-full bg-[#979797] grid place-content-center text-white"
+      className=" absolute top-1/2 -translate-y-1/2 right-0 -translate-x-1/3 z-50 h-10 lg:h-16 w-10 lg:w-16 rounded-full bg-[#979797] grid place-content-center text-white"
       onClick={onClick}
     >
       <FaLongArrowAltRight />
@@ -34,23 +34,92 @@ function SampleNextArrow(props) {
 }
 
 const Arrivals = () => {
+
+  
+  let [active, setActive] = useState(0);
+
   var settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    //variableWidth: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          arrows: false,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 1,
+          arrows: false,
+          dots: true,
+        },
+      },
+    ],
+    appendDots: (dots) => (
+      <div
+        className="flex "
+        // style={{
+        //   backgroundColor: "#ddd",
+        //   borderRadius: "10px",
+        //   padding: "10px",
+        //   display: "flex",
+
+        // }}
+      >
+        <ul
+          className="flex  justify-center gap-x-2 pt-5"
+          style={{ margin: "0px" }}
+        >
+          {" "}
+          {dots}{" "}
+        </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div
+        className={`grid place-content-center rounded-full h-1 w-8 text-transparent ${ active == i ? "bg-gray-500 " : "bg-gray-400/60" } `}
+        // style={{
+        //   width: "30px",
+        //   color: "blue",
+        //   border: "1px blue solid",
+        //   display: "flex"
+        // }}
+      >
+        {i + 1}
+      </div>
+    ),
+    beforeChange: (a, b) => {
+      setActive(b);
+    },
   };
 
   return (
     <>
-      <Container className="mt-32 ">
+      <Container className="pt-10 lg:pt-32">
         <TitleHeader headerText="New Arrivals" />
       </Container>
-      <Container className=" w-[1640px]">
+      <Container className=" lg:w-[1640px]">
         <div>
           <Slider {...settings}>
             <ProductItem

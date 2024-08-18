@@ -10,10 +10,10 @@ import p4 from "/Arrivals/productItem12.png";
 const SpecialOffers = () => {
   return (
     <>
-      <Container className="mt-32">
+      <Container className=" pt-8 sm:pt-10 lg:pt-32">
         <TitleHeader headerText="Special Offers" />
       </Container>
-      <Container className="flex gap-x-10 flex-wrap">
+      <Container className="flex justify-between md:gap-x-10 flex-wrap">
         <ProductItem
           src={p1}
           pName="Basic Crew Neck Tee"
@@ -44,6 +44,7 @@ const SpecialOffers = () => {
           color="black"
           offer="new"
           offerEye={true}
+          className="hidden sm:block"
         />
       </Container>
     </>

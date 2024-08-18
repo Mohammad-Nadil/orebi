@@ -10,8 +10,8 @@ const SaleOffer = () => {
   let navigate = useNavigate();
 
   return (
-    <Container className="  md:pt-[10.875rem]">
-      <div className="main md:h-[780px] grid gap-3 md:gap-10  grid-cols-2 grid-rows-2">
+    <Container className="pt-4 sm:pt-10 lg:pt-[10.875rem]">
+      <div className="main h-auto xl:h-[48.75rem]  grid gap-3 md:gap-10  grid-cols-2 grid-rows-2">
         <img
           src={ad1}
           className="object-cover h-full w-full row-span-2 cursor-pointer"

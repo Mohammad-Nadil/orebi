@@ -8,7 +8,7 @@ const Add_2 = () => {
     let navigate = useNavigate()
 
   return (
-    <Container className="pt-[5.625rem] ">
+    <Container className=" pt-4 sm:pt-10 lg:pt-[5.625rem] ">
         <img src={add2} alt="" className="cursor-pointer"
          onClick={()=> navigate("/shop")} />
     </Container>

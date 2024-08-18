@@ -19,7 +19,7 @@ const Banner = () => {
     slidesToScroll: 1,
     fade: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     cssEase: "linear",
     appendDots: (dots) => (
       <div
@@ -38,7 +38,7 @@ const Banner = () => {
     ),
     customPaging: (i) => (
       <div
-        className={`w-[30px] h-[30px] font-DM text-[10px]  border-r-2 flex items-center ${
+        className={`w-[1.875rem] h-[1.875rem] font-DM text-[0.625rem]  border-r-2 flex items-center ${
           active == i
             ? " text-primary  border-primary "
             : " text-transparent border-white "
