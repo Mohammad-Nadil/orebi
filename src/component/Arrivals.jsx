@@ -119,7 +119,7 @@ const Arrivals = () => {
       <Container className="pt-10 lg:pt-32">
         <TitleHeader headerText="New Arrivals" />
       </Container>
-      <Container className=" !px-0 2xl:w-[1640px]">
+      <Container className=" !px-0 max-w-[1640px]">
         <div>
           <Slider {...settings}>
             <ProductItem
