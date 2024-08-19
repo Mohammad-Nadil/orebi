@@ -35,9 +35,9 @@ const ProductItem = ({ className, src, pName, price, color, offer, offerEye }) =
   
 
   return (
-    <div className={`w-[29vw] sm:w-[20vw] md:w-[19vw] xl:w-[370px] ${className}`}>
-      <div className="image w-full h-[auto] lg:h-[370px] relative group">
-        <button className={` absolute top-4 left-4 font-DM font-bold text-[8px] sm:text-xs lg:text-sm text-white bg-black ${OfferShow?" py-1 px-3 lg:py-2 lg:px-8":"p-0"} `}>
+    <div className={`w-[42vw] sm:w-[20vw] md:w-[19vw] 2xl:w-[370px] ${className}`}>
+      <div className="image w-full h-[auto] 2xl:h-[370px] relative group">
+        <button className={` absolute top-4 left-4 font-DM font-bold text-[10px] sm:text-xs lg:text-sm text-white bg-black ${OfferShow?" py-1 px-3 lg:py-2 lg:px-8":"p-0"} `}>
           {offer}
         </button>
         <img src={src} className=" w-full lg:h-full " alt="" />
@@ -51,10 +51,10 @@ const ProductItem = ({ className, src, pName, price, color, offer, offerEye }) =
       </div>
       <div className="text">
         <div className="flex flex-col lg:flex-row justify-between">
-          <p className="text-primary font-DM text-xs sm:text-xs md:text-xl font-bold">{pName}</p>
-          <span className="font-DM text-secondary text-[10px] sm:text-xs lg:text-base sm:leading-5 xl:leading-[30px]">{price}</span>
+          <p className="text-primary font-DM text-sm md:text-xl font-bold">{pName}</p>
+          <span className="font-DM text-secondary text-sm lg:text-base sm:leading-5 xl:leading-[30px]">{price}</span>
         </div>
-        <p className="font-DM text-secondary text-[10px] sm:text-xs lg:text-base xl:leading-[30px]">{color}</p>
+        <p className="font-DM text-secondary text-xs lg:text-base xl:leading-[30px]">{color}</p>
       </div>
     </div>
   );

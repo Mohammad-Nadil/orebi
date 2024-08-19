@@ -44,7 +44,7 @@ const BestSellers = () => {
           color="black"
           offer="new"
           offerEye={true}
-          className="hidden sm:block"
+          // className="hidden sm:block"
         />
       </Container>
     </>
