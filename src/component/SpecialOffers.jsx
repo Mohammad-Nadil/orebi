@@ -13,7 +13,7 @@ const SpecialOffers = () => {
       <Container className=" pt-8 sm:pt-10 lg:pt-32">
         <TitleHeader headerText="Special Offers" />
       </Container>
-      <Container className="flex justify-between md:gap-x-10 flex-wrap">
+      <Container className="flex justify-evenly md:gap-x-10 flex-wrap">
         <ProductItem
           src={p1}
           pName="Basic Crew Neck Tee"

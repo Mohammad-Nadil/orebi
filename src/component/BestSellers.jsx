@@ -13,7 +13,7 @@ const BestSellers = () => {
       <Container className=" pt-5 sm:pt-10 lg:pt-32">
         <TitleHeader headerText="Best Sellers" />
       </Container>
-      <Container className="flex justify-between md:gap-x-10 flex-wrap">
+      <Container className=" pt-2 flex justify-evenly md:gap-x-10 flex-wrap">
         <ProductItem
           src={p1}
           pName="Basic Crew Neck Tee"

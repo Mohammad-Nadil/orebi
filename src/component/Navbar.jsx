@@ -39,10 +39,10 @@ const Navbar = () => {
             } `}
           >
             <Li className="!text-primary " liText="Home" href="/" />
-            <Li liText="Shop" href="/Shop" />
-            <Li liText="About" href="/About" />
-            <Li liText="Contacts" href="/Contacts" />
-            <Li liText="Journal" href="/Journal" />
+            <Li liText="Shop" href="/product" />
+            <Li liText="About" href="/about" />
+            <Li liText="Contacts" href="/contacts" />
+            <Li liText="Journal" href="/journal" />
           </ul>
 
           <div className="account flex gap-x-3 md:gap-x-10 md:hidden">
