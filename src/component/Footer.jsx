@@ -16,7 +16,7 @@ const Li = ({ href, liText }) => {
 
 const Footer = () => {
   return (
-    <Container className=" pt-10 lg:pt-[6.625rem]">
+    <Container className="lg:pt-14 mt-10 lg:mt-[6.625rem]">
       <div className="main py-5 md:py-14 flex md:justify-between gap-y-5 flex-col-reverse md:flex-row">
         <div className="left flex flex-col gap-y-5 lg:gap-y-16">
           <div className="up flex flex-wrap justify-between md:justify-normal gap-y-8 md:gap-x-16 xl:gap-x-36">

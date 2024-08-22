@@ -12,7 +12,8 @@ import About from "./component/page/About";
 import Shop from "./component/page/Shop";
 import Contacts from "./component/page/Contacts";
 import Journal from "./component/page/Journal";
-import Navbar from "./component/Navbar";
+import SignUp from "./component/page/SignUp";
+import Login from "./component/page/Login";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,8 @@ const router = createBrowserRouter(
       <Route path="/product" element={<Shop/>} ></Route>
       <Route path="/contacts" element={<Contacts/>} ></Route>
       <Route path="/journal" element={<Journal/>} ></Route>
+      <Route path="/sign/up" element={<SignUp/>} ></Route>
+      <Route path="/login" element={<Login/>} ></Route>
     </Route>
   )
 );

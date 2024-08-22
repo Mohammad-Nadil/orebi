@@ -33,9 +33,9 @@ const ProductItem = ({ className, src, pName, price, color, offer, offerEye }) =
     window.addEventListener("resize", widthSize);
   }, []);
   
-
+// w-[44vw] sm:w-[19vw] md:w-[20.5vw]
   return (
-    <div className={`w-[44vw] sm:w-[19vw] md:w-[20.5vw] 2xl:w-[370px] ${className}`}>
+    <div className={`w-[44vw] sm:w-[22%] 2xl:w-[370px] ${className}`}>
       <div className="image w-full h-[auto] 2xl:h-[370px] relative group">
         <button className={` absolute top-4 left-4 font-DM font-bold text-[10px] sm:text-xs lg:text-sm text-white bg-black ${OfferShow?" py-1 px-3 lg:py-2 lg:px-8":"p-0"} `}>
           {offer}

@@ -383,7 +383,7 @@ const SearchBar = () => {
               <div className="up ">
                 <CustomBtn
                   btnText="My Account"
-                  className="text-white !bg-[#979797] w-[200px] py-4"
+                  className="text-white  !bg-[#979797] w-[200px] py-4"
                 />
               </div>
               <div className="down ">
