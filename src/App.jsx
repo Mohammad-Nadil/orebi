@@ -14,17 +14,19 @@ import Contacts from "./component/page/Contacts";
 import Journal from "./component/page/Journal";
 import SignUp from "./component/page/SignUp";
 import Login from "./component/page/Login";
+import ProductDetails from "./component/page/ProductDetails";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route index element={<Home/>} ></Route>
-      <Route path="/about" element={<About/>} ></Route>
-      <Route path="/product" element={<Shop/>} ></Route>
-      <Route path="/contacts" element={<Contacts/>} ></Route>
-      <Route path="/journal" element={<Journal/>} ></Route>
-      <Route path="/sign/up" element={<SignUp/>} ></Route>
-      <Route path="/login" element={<Login/>} ></Route>
+      <Route index element={<Home />}></Route>
+      <Route path="/about" element={<About />}></Route>
+      <Route path="/product" element={<Shop />}></Route>
+      <Route path="/contacts" element={<Contacts />}></Route>
+      <Route path="/journal" element={<Journal />}></Route>
+      <Route path="/sign/up" element={<SignUp />}></Route>
+      <Route path="/login" element={<Login />}></Route>
+      <Route path="/product/details" element={<ProductDetails/>}></Route>
     </Route>
   )
 );
@@ -34,7 +36,7 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </>
   );
 }
