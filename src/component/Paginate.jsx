@@ -3,25 +3,40 @@ import ReactDOM from "react-dom";
 import ReactPaginate from "react-paginate";
 import ProductItem from "./layer/ProductItem";
 import p1 from "/Arrivals/productItem1.png";
+import VerticalProductItem from "./layer/VerticalProductItem";
 // Example items, to simulate fetching from another resources.
 const items = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,
 ];
 
 function Items({ currentItems }) {
+  let [grid, setGrid] = useState(true);
+
   return (
     <>
       {currentItems &&
-        currentItems.map((item, index) => (
-          <ProductItem
-            src={p1}
-            pName="Basic Crew Neck Tee"
-            price="$44.00"
-            color="black"
-            offer="10%"
-            offerEye={true}
-            key={index}
-          />
-        ))}
+        currentItems.map((item, index) =>
+          grid ? (
+            <ProductItem
+              src={p1}
+              pName="Basic Crew Neck Tee"
+              price="$44.00"
+              color="black"
+              offer="10%"
+              offerEye={true}
+              key={index}
+            />
+          ) : (
+            <VerticalProductItem
+              src={p1}
+              pName="Basic Crew Neck Tee"
+              price="$44.00"
+              color="black"
+              offer="10%"
+              offerEye={true}
+              key={index}
+            />
+          )
+        )}
     </>
   );
 }
@@ -72,7 +87,9 @@ const Paginate = ({ itemsPerPage }) => {
           renderOnZeroPageCount={null}
         />
         <p>
-          {`Products from ${itemOffset + 1} to ${endOffset > items.length ? items.length : endOffset} of ${items.length}`}
+          {`Products from ${itemOffset + 1} to ${
+            endOffset > items.length ? items.length : endOffset
+          } of ${items.length}`}
         </p>
       </div>
     </>
