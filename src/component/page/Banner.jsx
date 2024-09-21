@@ -62,7 +62,7 @@ const Banner = () => {
                 bottom: "5%",
                 left: "50%",
                 transform: "translateX(-50%)",
-                zIndex: "1000",
+                zIndex: "00",
                 width: "auto",
                 height: "30px",
               }}

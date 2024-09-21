@@ -2,58 +2,28 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import ReactPaginate from "react-paginate";
 import ProductItem from "./layer/ProductItem";
-import p1 from "/Arrivals/productItem1.png";
 import VerticalProductItem from "./layer/VerticalProductItem";
-// Example items, to simulate fetching from another resources.
-const items = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,13,14,1,2,3,4,5,6,7,8,9,10,11,12,
-];
 
-function Items({ currentItems }) {
-  let [grid, setGrid] = useState(true);
 
-  return (
-    <>
-      {currentItems &&
-        currentItems.map((item, index) =>
-          grid ? (
-            <ProductItem
-              src={p1}
-              pName="Basic Crew Neck Tee"
-              price="$44.00"
-              color="black"
-              offer="10%"
-              offerEye={true}
-              key={index}
-            />
-          ) : (
-            <VerticalProductItem
-              src={p1}
-              pName="Basic Crew Neck Tee"
-              price="$44.00"
-              color="black"
-              offer="10%"
-              offerEye={true}
-              key={index}
-            />
-          )
-        )}
-    </>
-  );
-}
 
 const Paginate = ({ itemsPerPage }) => {
-  // Here we use item offsets; we could also use page offsets
-  // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
+  const [items, setItems] = useState([]);
 
-  // Simulate fetching items from another resources.
-  // (This could be items from props; or items loaded in a local state
-  // from an API endpoint with useEffect and useState)
+  useEffect(() => {
+    const getData = async ()=>{
+      const response = await fetch('https://dummyjson.com/products');
+      const data = await response.json();
+      setItems(data.products);
+    }
+    getData()
+  }, []);
+
   const endOffset = itemOffset + itemsPerPage;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = items.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);
-
+  
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
@@ -85,7 +55,7 @@ const Paginate = ({ itemsPerPage }) => {
           previousClassName="page-item hidden"
           previousLinkClassName="page-link hidden"
           renderOnZeroPageCount={null}
-        />
+          />
         <p>
           {`Products from ${itemOffset + 1} to ${
             endOffset > items.length ? items.length : endOffset
@@ -96,4 +66,37 @@ const Paginate = ({ itemsPerPage }) => {
   );
 };
 
+function Items({ currentItems }) {
+  let [grid, setGrid] = useState(true);
+
+  return (
+    <>
+      {currentItems &&
+        currentItems.map((item, index) =>
+          grid ? (
+            <ProductItem
+              src={item.thumbnail}
+              pName={item.title}
+              price={item.price}
+              brand={item.brand}
+              offer={item.discountPercentage}
+              offerEye={true}
+              key={index}
+            />
+          ) : (
+            <VerticalProductItem
+            src={item.thumbnail}
+            pName={item.title}
+            price={item.price}
+            brand={item.brand}
+            offer={item.discountPercentage}
+            description= {item.description}
+              offerEye={true}
+              key={index}
+            />
+          )
+        )}
+    </>
+  );
+}
 export default Paginate;

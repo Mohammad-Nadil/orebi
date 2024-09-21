@@ -14,7 +14,7 @@ const Li = ({ liText, icon }) => {
   );
 };
 
-const ProductItem = ({ className, src, pName, price, color, offer, offerEye }) => {
+const ProductItem = ({ className, src, pName, price, brand, offer, offerEye }) => {
 
   let [OfferShow , setOfferShow] = useState(offerEye)
 
@@ -38,7 +38,7 @@ const ProductItem = ({ className, src, pName, price, color, offer, offerEye }) =
     <div className={`w-[44vw] sm:w-[22%] 2xl:w-[370px] ${className}`}>
       <div className="image w-full h-[auto] 2xl:h-[370px] relative group">
         <button className={` absolute top-4 left-4 font-DM font-bold text-[10px] sm:text-xs lg:text-sm text-white bg-black ${OfferShow?" py-1 px-3 lg:py-2 lg:px-8":"p-0"} `}>
-          {offer}
+         {offer} % off
         </button>
         <img src={src} className=" w-full lg:h-full " alt="" />
         <div className={`${show?"overlay absolute bottom-0 left-0 w-full p-6 bg-white/45 opacity-0 invisible group-hover:opacity-100 group-hover:visible  transition-all duration-300":"hidden"}`}>
@@ -54,7 +54,7 @@ const ProductItem = ({ className, src, pName, price, color, offer, offerEye }) =
           <p className="text-primary font-DM text-sm md:text-xl font-bold">{pName}</p>
           <span className="font-DM text-secondary text-sm lg:text-base sm:leading-5 xl:leading-[30px]">{price}</span>
         </div>
-        <p className="font-DM text-secondary text-xs lg:text-base xl:leading-[30px]">{color}</p>
+        <p className="font-DM text-secondary text-xs lg:text-base xl:leading-[30px]">{brand}</p>
       </div>
     </div>
   );

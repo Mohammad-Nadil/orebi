@@ -19,9 +19,10 @@ const VerticalProductItem = ({
   src,
   pName,
   price,
-  color,
+  brand,
   offer,
   offerEye,
+  description,
 }) => {
   let [OfferShow, setOfferShow] = useState(offerEye);
 
@@ -33,7 +34,7 @@ const VerticalProductItem = ({
             OfferShow ? " py-1 px-2 " : "p-0"
           } `}
         >
-          {offer}
+          {offer} % off
         </button>
         <img src={src} className=" w-44   " alt="" />
       </div>
@@ -45,11 +46,11 @@ const VerticalProductItem = ({
             {price}
           </span>
         <p className="font-DM text-secondary text-xs lg:text-base xl:leading-[30px]">
-          {color}
+          {brand}
         </p>
-        <p className="font-DM text-secondary">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores sapiente quis iusto placeat tempora repellat accusantium delectus voluptatem ducimus nihil amet ?</p>
+        <p className="font-DM text-secondary">{description}</p>
       </div>
-      <div className=" col-span-2 p-6 flex flex-col justify-between   transition-all duration-300">
+      <div className=" col-span-2 p-6 flex flex-col  justify-between   transition-all duration-300">
         <ul className="flex flex-col gap-y-3">
           <Li liText="Add to Wish List" icon={<FaHeart />} />
           <Li liText="Compare" icon={<LuRefreshCw />} />

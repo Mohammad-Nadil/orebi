@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "./layer/Container";
 import { FaBarsStaggered, FaCaretDown, FaUser } from "react-icons/fa6";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
@@ -12,6 +12,36 @@ const SearchBar = () => {
   let [show, setShow] = useState(false);
   let [cart, setCart] = useState(false);
   let [user, setUser] = useState(false);
+
+  let [search, setSearch] = useState("");
+  let [products, setProducts] = useState([]);
+  let [filterData, setFilterData] = useState([""]);
+
+  let manageSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  useEffect(() => {
+    let getData = async () => {try{
+      const response = await fetch("https://dummyjson.com/products");
+      const data = await response.json();
+      setProducts(data.products);}catch(error){
+        console.error("Error fetching data", error);
+      }
+    };
+    getData();
+  }, []);
+
+  useEffect(() => {
+    if (search == "") {
+      setFilterData("");
+    } else {
+      let searchData = products.filter((item) =>
+        item.title.toLowerCase().includes(search.toLowerCase())
+      );
+      setFilterData(searchData);
+    }
+  }, [search, products]);
 
   return (
     <div className="bg-[#F5F5F3] relative ">
@@ -363,9 +393,10 @@ const SearchBar = () => {
 
         <div className="input relative w-full md:w-auto">
           <input
-            className="py-4 px-5 w-full  md:w-[37.5rem] "
+            onChange={manageSearch}
+            className="py-4 px-5 w-full  md:w-[37.5rem] outline-none"
             placeholder="Search Products"
-            type="search"
+            value={search}
           />
           <FaSearch className="absolute top-1/2 -translate-y-1/2 right-0 -translate-x-5" />
         </div>
@@ -430,6 +461,34 @@ const SearchBar = () => {
           </div>
         )}
       </Container>
+
+      {filterData.length > 0 && (
+        <ul className="absolute z-50 left-1/2 -translate-x-1/2 flex flex-col gap-y-3 w-[90vw] sm:w-[37.5rem] 1">
+          {filterData.map((item, index) => (
+            <li
+              className="flex items-center bg-[#E5E7EB]/90 rounded-md px-3  gap-x-3"
+              key={index}
+            ><div>
+              <img
+                className="h-24 w-24 "
+                src={item.thumbnail}
+                alt={item.thumbnail}
+              /> </div><div className="flex justify-between w-full"  >
+              <div >
+                <h2 className="font-DM font-semibold text-xl">{item.title}</h2>
+                <p className="font-DM text-lg flex justify-between ">
+                  {item.brand}
+                </p>
+                <p className="font-DM font-bold">{item.price} $</p>
+              </div>
+              <div className="btn hidden sm:flex flex-col gap-3">
+                <button className="bg-orange-200 font-DM font-bold p-1 rounded-md text-secondary hover:text-primary hover:bg-orange-400 transition-all duration-300 " >Add to Wishlist</button>
+                <button className="bg-orange-200 font-DM font-bold p-1 rounded-md text-secondary hover:text-primary hover:bg-orange-400 transition-all duration-300 " >See product</button>
+              </div></div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
