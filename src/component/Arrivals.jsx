@@ -1,14 +1,10 @@
 import Container from "./layer/Container";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TitleHeader from "./layer/TitleHeader";
 import ProductItem from "./layer/ProductItem";
-import p1 from "/Arrivals/productItem1.png";
-import p2 from "/Arrivals/productItem2.png";
-import p3 from "/Arrivals/productItem3.png";
-import p4 from "/Arrivals/productItem4.png";
-import p5 from "/Arrivals/productItem10.png";
 import Slider from "react-slick";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import axios from "axios";
 
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
@@ -34,9 +30,20 @@ function SampleNextArrow(props) {
 }
 
 const Arrivals = () => {
-
-  
   let [active, setActive] = useState(0);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get("https://dummyjson.com/products");
+        setItems(response.data.products);
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+    getData();
+  }, []);
 
   var settings = {
     dots: false,
@@ -60,7 +67,7 @@ const Arrivals = () => {
         breakpoint: 768,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
           arrows: false,
           dots: true,
         },
@@ -98,7 +105,9 @@ const Arrivals = () => {
     ),
     customPaging: (i) => (
       <div
-        className={`grid place-content-center rounded-full h-1 w-8 text-transparent ${ active == i ? "bg-gray-500 " : "bg-gray-400/60" } `}
+        className={`grid place-content-center rounded-full h-1 w-8 text-transparent ${
+          active == i ? "bg-gray-500 " : "bg-gray-400/60"
+        } `}
         // style={{
         //   width: "30px",
         //   color: "blue",
@@ -122,49 +131,20 @@ const Arrivals = () => {
       <Container className=" !px-0 max-w-[1640px]">
         <div>
           <Slider {...settings}>
-            <ProductItem
-              src={p1}
-              pName="Basic Crew Neck Tee"
-              price="$44.00"
-              color="black"
-              offer="10%"
-              offerEye={true}
-              className="!w-full px-5"
-            />
-            <ProductItem
-              src={p2}
-              pName="Basic Crew Neck Tee"
-              price="$44.00"
-              color="black"
-              offerEye={false}
-              className="!w-full px-5"
-            />
-            <ProductItem
-              src={p3}
-              pName="Basic Crew Neck Tee"
-              price="$44.00"
-              color="black"
-              offer="50%"
-              offerEye={true}
-              className="!w-full px-5"
-            />
-            <ProductItem
-              src={p4}
-              pName="Basic Crew Neck Tee"
-              price="$44.00"
-              color="black"
-              offerEye={false}
-              className="!w-full px-5"
-            />
-            <ProductItem
-              src={p5}
-              pName="Basic Crew Neck Tee"
-              price="$44.00"
-              color="black"
-              offer="new"
-              offerEye={true}
-              className="!w-full px-5"
-            />
+            {items.filter(( data , index ) => index > 5 && index < 15 )
+            
+            .map((item, i) => (
+              <ProductItem
+                src={item.thumbnail}
+                pName={item.title}
+                price={item.price}
+                brand={item.brand}
+                offer={item.discountPercentage}
+                offerEye={true}
+                key={i}
+                className="!w-full px-5"
+              />
+            ))}
           </Slider>
         </div>
       </Container>

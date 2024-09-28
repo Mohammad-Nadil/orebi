@@ -1,51 +1,41 @@
 import Container from "./layer/Container";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TitleHeader from "./layer/TitleHeader";
 import ProductItem from "./layer/ProductItem";
-import p1 from "/Arrivals/productItem9.png";
-import p2 from "/Arrivals/productItem10.png";
-import p3 from "/Arrivals/productItem11.png";
-import p4 from "/Arrivals/productItem12.png";
-
+import axios from "axios";
 const SpecialOffers = () => {
+  let [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const allProducts = await axios.get("https://dummyjson.com/products");
+        setItems(allProducts.data.products);
+      } catch (error) {
+        console.error("error in fetching api", error);
+      }
+    };
+    getData();
+  }, []);
+
   return (
     <>
-      <Container className=" pt-8 sm:pt-10 lg:pt-32">
+      <Container className=" pt-5 sm:pt-10 lg:pt-32">
         <TitleHeader headerText="Special Offers" />
       </Container>
-      <Container className="flex justify-evenly md:gap-x-10 flex-wrap">
-        <ProductItem
-          src={p1}
-          pName="Basic Crew Neck Tee"
-          price="$44.00"
-          color="black"
-          offer="10%"
-          offerEye={true}
-        />
-        <ProductItem
-          src={p2}
-          pName="Basic Crew Neck Tee"
-          price="$44.00"
-          color="black"
-          offerEye={false}
-        />
-        <ProductItem
-          src={p3}
-          pName="Basic Crew Neck Tee"
-          price="$44.00"
-          color="black"
-          offer="50%"
-          offerEye={true}
-        />
-        <ProductItem
-          src={p4}
-          pName="Basic Crew Neck Tee"
-          price="$44.00"
-          color="black"
-          offer="new"
-          offerEye={true}
-          // className="hidden sm:block"
-        />
+      <Container className="
+      pt-2 flex justify-between 2xl:gap-x-10 gap-y-5 flex-wrap">
+        {items.filter(( data , index )=> index > 12 && index <= 16  ).map((item, i) => (
+          <ProductItem
+            src={item.thumbnail}
+            pName={item.title}
+            price={item.price}
+            brand={item.brand}
+            offer={item.discountPercentage}
+            offerEye={true}
+            key={i}
+          />
+        ))}
       </Container>
     </>
   );

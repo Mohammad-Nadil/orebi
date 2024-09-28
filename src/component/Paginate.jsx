@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import ReactPaginate from "react-paginate";
 import ProductItem from "./layer/ProductItem";
 import VerticalProductItem from "./layer/VerticalProductItem";
+import axios from "axios";
 
 
 

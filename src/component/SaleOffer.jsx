@@ -11,7 +11,7 @@ const SaleOffer = () => {
 
   return (
     <Container className="pt-4 sm:pt-10 lg:pt-[10.875rem]">
-      <div className="main h-auto 2xl:h-[48.75rem]  grid gap-3 md:gap-10  grid-cols-2 grid-rows-2">
+      <div className="main h-auto 2xl:h-[48.75rem]  grid gap-3 md:gap-10  sm:grid-cols-2 sm:grid-rows-2">
         <img
           src={ad1}
           className="object-cover h-full w-full row-span-2 cursor-pointer"
