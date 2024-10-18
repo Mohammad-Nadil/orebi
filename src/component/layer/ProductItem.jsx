@@ -36,12 +36,12 @@ const ProductItem = ({ className, src, pName, price, brand, offer, offerEye }) =
   
 
   return (
-    <div className={`w-[41vw] sm:w-[22%] 2xl:w-[370px] ${className}`}>
-      <div className="image w-full h-[auto] 2xl:h-[370px] relative group">
+    <div className={` w-full sm:w-auto ${className}`}>
+      <div className="image w-full aspect-square relative group">
         <button className={` absolute top-4 left-4 font-DM font-bold text-[10px] sm:text-xs lg:text-sm text-white bg-black ${OfferShow?" py-1 px-3 lg:py-2 lg:px-8":"p-0"} `}>
          {offer} % off
         </button>
-        <Image src={src} className=" w-full lg:h-full " alt="" />
+        <Image src={src} width={"100%"} height={"100%"}  alt="" />
         <div className={`${show?"overlay absolute bottom-0 left-0 w-full p-6 bg-white/45 opacity-0 invisible group-hover:opacity-100 group-hover:visible  transition-all duration-300":"hidden"}`}>
           <ul className="flex flex-col gap-y-3">
             <Li liText="Add to Wish List" icon={<FaHeart />} />

@@ -56,13 +56,13 @@ const Arrivals = () => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
-      // {
-      //   breakpoint: 1536,
-      //   settings: {
-      //     slidesToShow: 4,
-      //     slidesToScroll: 1,
-      //   },
-      // },
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
       {
         breakpoint: 768,
         settings: {
