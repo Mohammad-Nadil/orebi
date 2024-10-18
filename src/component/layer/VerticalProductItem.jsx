@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { LuRefreshCw } from "react-icons/lu";
 import { FaShoppingCart } from "react-icons/fa";
+import { Image } from 'antd';
 
 const Li = ({ liText, icon }) => {
   return (
@@ -36,7 +37,7 @@ const VerticalProductItem = ({
         >
           {offer} % off
         </button>
-        <img src={src} className=" w-44   " alt="" />
+        <Image src={src} className=" w-44   " alt="" />
       </div>
       <div className="text py-3 px-2 flex flex-col justify-between col-span-5 " >
           <p className="text-primary font-DM text-sm md:text-xl font-bold">

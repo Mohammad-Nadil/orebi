@@ -15,6 +15,7 @@ import Journal from "./component/page/Journal";
 import SignUp from "./component/page/SignUp";
 import Login from "./component/page/Login";
 import ProductDetails from "./component/page/ProductDetails";
+import Cart from "./component/page/Cart";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       <Route path="/sign/up" element={<SignUp />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/product/details" element={<ProductDetails/>}></Route>
+      <Route path="/cart" element={<Cart/>}></Route>
     </Route>
   )
 );

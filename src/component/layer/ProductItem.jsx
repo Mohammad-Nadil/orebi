@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { LuRefreshCw } from "react-icons/lu";
 import { FaShoppingCart } from "react-icons/fa";
+import { Image } from 'antd';
 
 const Li = ({ liText, icon }) => {
   return (
@@ -40,7 +41,7 @@ const ProductItem = ({ className, src, pName, price, brand, offer, offerEye }) =
         <button className={` absolute top-4 left-4 font-DM font-bold text-[10px] sm:text-xs lg:text-sm text-white bg-black ${OfferShow?" py-1 px-3 lg:py-2 lg:px-8":"p-0"} `}>
          {offer} % off
         </button>
-        <img src={src} className=" w-full lg:h-full " alt="" />
+        <Image src={src} className=" w-full lg:h-full " alt="" />
         <div className={`${show?"overlay absolute bottom-0 left-0 w-full p-6 bg-white/45 opacity-0 invisible group-hover:opacity-100 group-hover:visible  transition-all duration-300":"hidden"}`}>
           <ul className="flex flex-col gap-y-3">
             <Li liText="Add to Wish List" icon={<FaHeart />} />
