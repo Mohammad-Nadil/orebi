@@ -93,14 +93,15 @@ const Cart = () => {
             </div>
           </div>
           <div className="coupon  flex justify-end px-10 py-5">
-            <div className="code flex items-center w-2/6  gap-x-5">
-              <p className="font-bold text-primary text-sm">Apply coupon :</p>
+            <div className="code flex items-center w-2/6  ">
               <input
-                className=" py-2 border outline-none"
+                className=" p-2 border outline-none"
                 type="text"
                 name=""
                 id=""
+                placeholder="Coupon Code"
               />
+              <div className="font-bold border p-2 bg-primary hover:bg-secondary duration-300 text-white text-sm">Apply coupon </div>
             </div>
             <div className="btn w-1/6  grid place-content-center ">
               <button className="border hover:bg-secondary hover:text-white duration-300 py-2 px-4  rounded-md">
