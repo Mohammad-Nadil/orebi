@@ -3,12 +3,15 @@ import React, { useEffect, useState } from "react";
 import TitleHeader from "./layer/TitleHeader";
 import ProductItem from "./layer/ProductItem";
 import axios from "axios";
+import products from "../products";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../features/cartSlice";
 
 const BestSellers = () => {
-  const [items, setItems] = useState([]);
-
+  let items = useSelector((state)=> state.allCart.items)
   let [show, setShow] = useState(4);
-
+  let dispatch = useDispatch()
+  
   useEffect(() => {
     function widthSize() {
       if (window.innerWidth >= (1563)) {
@@ -33,18 +36,19 @@ const BestSellers = () => {
     widthSize();
     window.addEventListener("resize", widthSize);
   }, []);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get("https://dummyjson.com/products");
-        setItems(response.data.products);
-      } catch (error) {
-        console.error("Error fetching data", error);
-      }
-    };
-    getData();
-  }, []);
+  
+  // const [items, setItems] = useState([]);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const response = await axios.get("https://dummyjson.com/products");
+  //       setItems(response.data.products);
+  //     } catch (error) {
+  //       console.error("Error fetching data", error);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
 
   return (
     <>
@@ -62,6 +66,7 @@ const BestSellers = () => {
               offer={item.discountPercentage}
               offerEye={true}
               key={i}
+              onClick={()=>dispatch(addToCart(item))}
             />
           ))}
       </Container>

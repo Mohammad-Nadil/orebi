@@ -7,6 +7,7 @@ import DDli from "./layer/DDli";
 import CustomBtn from "./layer/CustomBtn";
 import Image from "./layer/Image";
 import { MdClose } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 const SearchBar = () => {
   let [show, setShow] = useState(false);
@@ -14,23 +15,26 @@ const SearchBar = () => {
   let [user, setUser] = useState(false);
 
   let [search, setSearch] = useState("");
-  let [products, setProducts] = useState([]);
   let [filterData, setFilterData] = useState([""]);
 
   let manageSearch = (e) => {
     setSearch(e.target.value);
   };
 
-  useEffect(() => {
-    let getData = async () => {try{
-      const response = await fetch("https://dummyjson.com/products");
-      const data = await response.json();
-      setProducts(data.products);}catch(error){
-        console.error("Error fetching data", error);
-      }
-    };
-    getData();
-  }, []);
+  let products = useSelector((state) => state.allCart.items);
+  let cartItems = useSelector((state) => state.allCart.cart);
+
+  // let [products, setProducts] = useState([]);
+  // useEffect(() => {
+  //   let getData = async () => {try{
+  //     const response = await fetch("https://dummyjson.com/products");
+  //     const data = await response.json();
+  //     setProducts(data.products);}catch(error){
+  //       console.error("Error fetching data", error);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
 
   useEffect(() => {
     if (search == "") {
@@ -431,20 +435,22 @@ const SearchBar = () => {
         {cart && (
           <div className="cartDDL w-[22.5rem] bg-white absolute right-0 top-full z-10 ">
             <div className="up">
-              <div className="item flex items-center justify-between p-5">
-                <div className="img flex items-center gap-x-5 ">
-                  <Image className=" w-20 h-20 bg-[#D8D8D8]" />
-                  <div className="text flex flex-col">
-                    <h1 className=" font-DM font-bold text-sm text-primary ">
-                      Black Smart Watch
-                    </h1>
-                    <p className=" font-DM font-bold text-sm text-primary ">
-                      $44.00
-                    </p>
+              {cartItems.map((item) => (
+                <div key={item.id} className="item flex items-center justify-between p-5">
+                  <div className="img flex items-center gap-x-5 ">
+                    <Image  className=" w-20 h-20 bg-[#D8D8D8]" />
+                    <div className="text flex flex-col">
+                      <h1 className=" font-DM font-bold text-sm text-primary ">
+                        {item.title}
+                      </h1>
+                      <p className=" font-DM font-bold text-sm text-primary ">
+                        ${item.price}
+                      </p>
+                    </div>
                   </div>
+                  <MdClose />
                 </div>
-                <MdClose />
-              </div>
+              ))}
             </div>
             <div className="down p-5 flex flex-col gap-y-3">
               <div className="price font-DM leading-6 text-t-primary">
@@ -454,7 +460,7 @@ const SearchBar = () => {
                 </p>
               </div>
               <div className="btn flex justify-center gap-x-5">
-                <CustomBtn className=" py-4 " btnText="View Cart" />
+                <CustomBtn href="/cart" className=" py-4 " btnText="View Cart" />
                 <CustomBtn className=" py-4 " btnText="Checkout" />
               </div>
             </div>
@@ -468,23 +474,33 @@ const SearchBar = () => {
             <li
               className="flex items-center bg-[#E5E7EB]/90 rounded-md px-3  gap-x-3"
               key={index}
-            ><div>
-              <img
-                className="h-24 w-24 "
-                src={item.thumbnail}
-                alt={item.thumbnail}
-              /> </div><div className="flex justify-between w-full"  >
-              <div >
-                <h2 className="font-DM font-semibold text-xl">{item.title}</h2>
-                <p className="font-DM text-lg flex justify-between ">
-                  {item.brand}
-                </p>
-                <p className="font-DM font-bold">{item.price} $</p>
+            >
+              <div>
+                <img
+                  className="h-24 w-24 "
+                  src={item.thumbnail}
+                  alt={item.images}
+                />{" "}
               </div>
-              <div className="btn hidden sm:flex flex-col gap-3">
-                <button className="bg-orange-200 font-DM font-bold p-1 rounded-md text-secondary hover:text-primary hover:bg-orange-400 transition-all duration-300 " >Add to Wishlist</button>
-                <button className="bg-orange-200 font-DM font-bold p-1 rounded-md text-secondary hover:text-primary hover:bg-orange-400 transition-all duration-300 " >See product</button>
-              </div></div>
+              <div className="flex justify-between w-full">
+                <div>
+                  <h2 className="font-DM font-semibold text-xl">
+                    {item.title}
+                  </h2>
+                  <p className="font-DM text-lg flex justify-between ">
+                    {item.brand}
+                  </p>
+                  <p className="font-DM font-bold">{item.price} $</p>
+                </div>
+                <div className="btn hidden sm:flex flex-col gap-3">
+                  <button className="bg-orange-200 font-DM font-bold p-1 rounded-md text-secondary hover:text-primary hover:bg-orange-400 transition-all duration-300 ">
+                    Add to Wishlist
+                  </button>
+                  <button className="bg-orange-200 font-DM font-bold p-1 rounded-md text-secondary hover:text-primary hover:bg-orange-400 transition-all duration-300 ">
+                    See product
+                  </button>
+                </div>
+              </div>
             </li>
           ))}
         </ul>

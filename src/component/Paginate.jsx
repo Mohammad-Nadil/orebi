@@ -4,11 +4,19 @@ import ReactPaginate from "react-paginate";
 import ProductItem from "./layer/ProductItem";
 import VerticalProductItem from "./layer/VerticalProductItem";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../features/cartSlice.js";
 
 
 
-const Paginate = ({ itemsPerPage }) => {
+const Paginate = ({ itemsPerPage  }) => {
   const [itemOffset, setItemOffset] = useState(0);
+
+  
+  // let items = useSelector((state) => state.allCart.items )
+  
+  // console.log(items)
+
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -67,9 +75,9 @@ const Paginate = ({ itemsPerPage }) => {
   );
 };
 
-function Items({ currentItems }) {
+function Items({ currentItems , onClick }) {
   let [grid, setGrid] = useState(true);
-
+  let dispatch = useDispatch();
   return (
     <>
       {currentItems &&
@@ -83,6 +91,7 @@ function Items({ currentItems }) {
               offer={item.discountPercentage}
               offerEye={true}
               key={index}
+              onClick={() => dispatch(addToCart(item))}
             />
           ) : (
             <VerticalProductItem
@@ -94,6 +103,7 @@ function Items({ currentItems }) {
             description= {item.description}
               offerEye={true}
               key={index}
+              onClick={() => dispatch(addToCart(item))}
             />
           )
         )}

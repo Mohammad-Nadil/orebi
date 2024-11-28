@@ -12,6 +12,7 @@ import {
   FaPlus,
 } from "react-icons/fa";
 import Paginate from "../Paginate";
+import { useDispatch } from "react-redux";
 
 const Shop = () => {
   let [showNumber, setShowNumber] = useState(12);
@@ -175,7 +176,7 @@ const Shop = () => {
               </div>
             </div>
             <div className="down">
-              <Paginate itemsPerPage={showNumber} />
+              <Paginate  itemsPerPage={showNumber} />
             </div>
           </div>
         </div>

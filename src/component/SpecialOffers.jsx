@@ -3,10 +3,14 @@ import React, { useEffect, useState } from "react";
 import TitleHeader from "./layer/TitleHeader";
 import ProductItem from "./layer/ProductItem";
 import axios from "axios";
+import products from "../products";
+import { useDispatch, useSelector } from "react-redux";
+import {addToCart} from '../features/cartSlice'
 const SpecialOffers = () => {
-  let [items, setItems] = useState([]);
   let [show, setShow] = useState(4);
-
+  let items = useSelector((state)=> state.allCart.items)
+  let dispatch = useDispatch()
+  
   useEffect(() => {
     function widthSize() {
       if (window.innerWidth >= (1563)) {
@@ -31,18 +35,19 @@ const SpecialOffers = () => {
     widthSize();
     window.addEventListener("resize", widthSize);
   }, []);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const allProducts = await axios.get("https://dummyjson.com/products");
-        setItems(allProducts.data.products);
-      } catch (error) {
-        console.error("error in fetching api", error);
-      }
-    };
-    getData();
-  }, []);
+  
+  // let [items, setItems] = useState([]);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const allProducts = await axios.get("https://dummyjson.com/products");
+  //       setItems(allProducts.data.products);
+  //     } catch (error) {
+  //       console.error("error in fetching api", error);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
 
   return (
     <>
@@ -60,6 +65,7 @@ const SpecialOffers = () => {
             offer={item.discountPercentage}
             offerEye={true}
             key={i}
+            onClick={()=> dispatch(addToCart(item))}
           />
         ))}
       </Container>

@@ -5,6 +5,8 @@ import ProductItem from "./layer/ProductItem";
 import Slider from "react-slick";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../features/cartSlice";
 
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
@@ -31,19 +33,21 @@ function SampleNextArrow(props) {
 
 const Arrivals = () => {
   let [active, setActive] = useState(0);
-  const [items, setItems] = useState([]);
+  let items = useSelector((state) => state.allCart.items);
+  let dispatch = useDispatch();
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get("https://dummyjson.com/products");
-        setItems(response.data.products);
-      } catch (error) {
-        console.error("Error fetching data", error);
-      }
-    };
-    getData();
-  }, []);
+  // const [items, setItems] = useState([]);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const response = await axios.get("https://dummyjson.com/products");
+  //       setItems(response.data.products);
+  //     } catch (error) {
+  //       console.error("Error fetching data", error);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
 
   var settings = {
     dots: false,
@@ -84,16 +88,7 @@ const Arrivals = () => {
       },
     ],
     appendDots: (dots) => (
-      <div
-        className="flex "
-        // style={{
-        //   backgroundColor: "#ddd",
-        //   borderRadius: "10px",
-        //   padding: "10px",
-        //   display: "flex",
-
-        // }}
-      >
+      <div className="flex ">
         <ul
           className="flex  justify-center gap-x-2 pt-5"
           style={{ margin: "0px" }}
@@ -108,12 +103,6 @@ const Arrivals = () => {
         className={`grid place-content-center rounded-full h-1 w-8 text-transparent ${
           active == i ? "bg-gray-500 " : "bg-gray-400/60"
         } `}
-        // style={{
-        //   width: "30px",
-        //   color: "blue",
-        //   border: "1px blue solid",
-        //   display: "flex"
-        // }}
       >
         {i + 1}
       </div>
@@ -131,20 +120,22 @@ const Arrivals = () => {
       <Container className=" !px-0 max-w-[1640px]">
         <div>
           <Slider {...settings}>
-            {items.filter(( data , index ) => index > 5 && index < 15 )
-            
-            .map((item, i) => (
-              <ProductItem
-                src={item.thumbnail}
-                pName={item.title}
-                price={item.price}
-                brand={item.brand}
-                offer={item.discountPercentage}
-                offerEye={true}
-                key={i}
-                className="!w-full px-5"
-              />
-            ))}
+            {items
+              .filter((data, index) => index > 5 && index < 15)
+
+              .map((item, i) => (
+                <ProductItem
+                  src={item.thumbnail}
+                  pName={item.title}
+                  price={item.price}
+                  brand={item.brand}
+                  offer={item.discountPercentage}
+                  offerEye={true}
+                  key={i}
+                  className="!w-full px-5"
+                  onClick={() => dispatch(addToCart(item))}
+                />
+              ))}
           </Slider>
         </div>
       </Container>
