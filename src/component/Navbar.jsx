@@ -9,19 +9,8 @@ import { FaCaretDown, FaUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
-  const [show, setShow] = useState(window.innerWidth < 768);
+  const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    function handleResize() {
-      setShow(window.innerWidth < 768);
-    }
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    setShow(false);
-  }, [location.pathname]);
   return (
     <>
       <nav className="bg-gray-200 ">
@@ -35,7 +24,7 @@ const Navbar = () => {
 
           <ul
             className={`transition-all duration-500 md:static gap-x-10 flex absolute left-0 top-full md:flex-row flex-col md:justify-center md:bg-transparent w-full px-3 md:px-0 z-20 bg-inherit 
-            ${show ? "opacity-100 visible" : "opacity-0 invisible"}`}
+            md:opacity-100 md:visible ${show ? "opacity-100 visible" : "opacity-0 invisible"}`}
           >
             <Li className="!text-primary " liText="Home" href="/" />
             <Li liText="Shop" href="/product" />
