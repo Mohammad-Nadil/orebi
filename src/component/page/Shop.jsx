@@ -12,9 +12,12 @@ import {
   FaPlus,
 } from "react-icons/fa";
 import Paginate from "../Paginate";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleView } from "../../features/viewSlice";
 
 const Shop = () => {
+  let dispatch = useDispatch();
+  let isListView = useSelector((state) => state.view.isListView);
   let [showNumber, setShowNumber] = useState(12);
   let numberUpdate = (element) => {
     let numberCollect = Number(element.target.value);
@@ -29,8 +32,8 @@ const Shop = () => {
     <>
       <Container>
         <BreadCrum />
-        <div className="flex gap-10 justify-between pt-32">
-          <div className="filterClass flex flex-col gap-5 w-[23.3125rem]  ">
+        <div className="flex flex-col sm:flex-row gap-10 justify-between pt-8 md:pt-16 xl:pt-32">
+          <div className="filterClass sm:w-1/4 hidden md:flex flex-col gap-5   ">
             <div className="categoryFilter">
               <div
                 onClick={() => setShowCat(!showCat)}
@@ -135,18 +138,33 @@ const Shop = () => {
               </ul>
             </div>
           </div>
-          <div className="right w-[74.375rem] flex flex-col gap-y-[3.75rem]">
-            <div className="up flex justify-between ">
-              <div className="icon flex gap-x-5">
-                <div className=" w-9 h-9 bg-primary text-white grid place-content-center">
+          <div className="right w-full md:w-3/4 flex flex-col gap-y-5 mdgap-y-10 xl:gap-y-14">
+            <div className="up flex justify-between gap-x-3 ">
+              <div
+                onClick={() => dispatch(toggleView())}
+                className="icon hidden sm:flex gap-x-5 cursor-pointer"
+              >
+                <div
+                  className={`w-9 h-9 grid place-content-center rounded ${
+                    !isListView
+                      ? "bg-primary text-white"
+                      : "bg-gray-300 text-gray-700"
+                  }`}
+                >
                   <IoGrid />
                 </div>
-                <div className=" w-9 h-9 bg text-secondary grid place-content-center">
+                <div
+                  className={`w-9 h-9 grid place-content-center rounded ${
+                    isListView
+                      ? "bg-secondary text-white"
+                      : "bg-gray-300 text-gray-700"
+                  }`}
+                >
                   <FaBarsProgress />
                 </div>
               </div>
-              <div className="short flex gap-x-10 font-DM leading-7 text-secondary">
-                <div className=" flex items-center gap-x-9">
+              <div className="short flex justify-between w-full gap-x-3 md:gap-x-10 font-DM leading-7 text-secondary">
+                <div className=" flex flex-col sm:flex-row sm:items-center gap-x-3 md:gap-x-9">
                   <p>short by:</p>
                   <select className="border border-[#F0F0F0]" name="" id="">
                     <option value="popularity">popularity</option>
@@ -159,7 +177,7 @@ const Shop = () => {
                     </option>
                   </select>
                 </div>
-                <div className=" flex items-center gap-x-9">
+                <div className=" flex flex-col sm:flex-row items-end sm:items-center gap-x-3 md:gap-x-9">
                   <p>short by:</p>
                   <select
                     className="border border-[#F0F0F0]"
@@ -175,8 +193,8 @@ const Shop = () => {
                 </div>
               </div>
             </div>
-            <div className="down">
-              <Paginate  itemsPerPage={showNumber} />
+            <div className="down w-full ">
+              <Paginate itemsPerPage={showNumber} />
             </div>
           </div>
         </div>

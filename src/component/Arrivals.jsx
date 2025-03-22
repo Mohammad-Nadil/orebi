@@ -122,7 +122,6 @@ const Arrivals = () => {
           <Slider {...settings}>
             {items
               .filter((data, index) => index > 5 && index < 15)
-
               .map((item, i) => (
                 <ProductItem
                   src={item.thumbnail}
@@ -132,7 +131,8 @@ const Arrivals = () => {
                   offer={item.discountPercentage}
                   offerEye={true}
                   key={i}
-                  className="!w-full px-5"
+                  id={item.id}
+                  className="!w-full px-1 md:px-5"
                   onClick={() => dispatch(addToCart(item))}
                 />
               ))}

@@ -6,14 +6,22 @@ import { FaAngleRight, FaStar } from "react-icons/fa";
 import productImage from "/productDetails/Image_4.jpg";
 import SizeSelector from "../layer/SizeSelector.jsx";
 import QuantitySelector from "../layer/QuantitySelector.jsx";
+import { Image } from "antd";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 const ProductDetails = () => {
   let [accordion, setAccordion] = useState(false);
+
+  let { id } = useParams();
+  let products = useSelector((state) =>
+    state.allCart.items.find((item) => item.id === Number(id))
+  );
 
   return (
     <div>
       <Container>
         <TitleHeader
-          className="capitalize !text-5xl"
+          className="capitalize  xl:text-5xl"
           headerText={`${window.location.pathname.split("/")[1]}
          ${window.location.pathname.split("/")[2]} `}
         />
@@ -22,53 +30,50 @@ const ProductDetails = () => {
           {window.location.pathname.split("/")[1]}{" "}
           {window.location.pathname.split("/")[2]}
         </p>
-        <div className=" w-full  h-[100rem] grid grid-cols-2 grid-rows-2">
-          <div className="h-full w-full ">
-            <img
-              className="h-full w-full object-cover"
-              src={productImage}
+        <div className=" w-full   grid grid-cols-2 grid-rows-2 4">
+          <div className="h-full w-full object-cover ">
+            <Image
+              className="!h-full !w-full aspect-square "
+              src={products.images[0]}
               alt=""
             />
           </div>
-          <div className="h-full w-full ">
-            <img
-              className="h-full w-full object-cover"
-              src={productImage}
+          <div className="h-full w-full object-cover ">
+            <Image
+              className="!h-full !w-full aspect-square "
+              src={products.images[0]}
               alt=""
             />
           </div>
-          <div className="h-full w-full ">
-            <img
-              className="h-full w-full object-cover"
-              src={productImage}
+          <div className="h-full w-full object-cover ">
+            <Image
+              className="!h-full !w-full aspect-square "
+              src={products.images[0]}
               alt=""
             />
           </div>
-          <div className="h-full w-full ">
-            <img
-              className="h-full w-full object-cover"
-              src={productImage}
+          <div className="h-full w-full object-cover ">
+            <Image
+              className="!h-full !w-full aspect-square "
+              src={products.images[0]}
               alt=""
             />
           </div>
         </div>
-        <div className="productInformation w-[780px] flex flex-col gap-y-7">
+        <div className="productInformation w-full flex flex-col gap-y-7">
           <div className="flex flex-col ">
-            <TitleHeader headerText="Product" />
-            <div className="reviewIcons pt-4 pb-5 flex gap-0.5 text-[#FFD881]">
+            <TitleHeader headerText={products.title} />
+            <div className="reviewIcons pt-4 pb-5 flex gap-1 text-[#FFD881] items-center">
               <FaStar />
               <FaStar />
               <FaStar />
               <FaStar />
               <FaStar />
-              <p>1 Review</p>
+              <p>{products.reviews.length} Review</p>
             </div>
             <p className="flex items-center gap-6 pb-5 border-b border-[#D8D8D8]">
-              <del className="text-red-500">
-                <span className="text-secondary">$88.00</span>
-              </del>
               <span className="text-primary text-xl">
-                <b>$44.00</b>
+                <b>${products.price}</b>
               </span>
             </p>
           </div>
@@ -104,7 +109,9 @@ const ProductDetails = () => {
                 <p className="font-DM font-bold leading-6 text-primary">
                   STATUS:
                 </p>
-                <p className="font-DM leading-7 text-secondary">In Stock</p>
+                <p className="font-DM leading-7 text-secondary">
+                  {products.availabilityStatus}
+                </p>
               </li>
             </ul>
             <div className="flex gap-x-5 pt-7 pb-7 border-b border-[#D8D8D8]">
@@ -127,14 +134,8 @@ const ProductDetails = () => {
                         : "h-0 overflow-hidden p-0"
                     }`}
                   >
-                    <h2>Lorem ipsum dolor sit amet !</h2>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Blanditiis voluptate consequuntur minima doloribus,
-                      necessitatibus qui dolores aspernatur molestiae dolor,
-                      delectus consectetur quas autem! Similique fugiat, optio
-                      quas omnis aliquam exercitationem.
-                    </p>
+                    <h2>{products.title}</h2>
+                    <p>{products.description}</p>
                   </div>
                 </li>
               </ul>

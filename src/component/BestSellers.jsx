@@ -30,7 +30,7 @@ const BestSellers = () => {
         setShow(2);
       }
       else{
-        setShow(1);
+        setShow(2);
       }
     }
     widthSize();
@@ -55,7 +55,7 @@ const BestSellers = () => {
       <Container className=" pt-5 sm:pt-10 lg:pt-32">
         <TitleHeader headerText="Best Sellers" />
       </Container>
-      <Container className=" pt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-x-10  gap-5  ">
+      <Container className=" pt-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-x-10  gap-5  ">
         {items
           .filter((data, index) => index < show).map((item, i) => (
             <ProductItem
@@ -66,6 +66,7 @@ const BestSellers = () => {
               offer={item.discountPercentage}
               offerEye={true}
               key={i}
+              id={item.id}
               onClick={()=>dispatch(addToCart(item))}
             />
           ))}
