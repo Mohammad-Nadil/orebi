@@ -11,6 +11,7 @@ import {
   increaseQuantity,
   removeFromCart,
 } from "../../features/cartSlice";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   let items = useSelector((state) => state.allCart.cart);
@@ -21,8 +22,8 @@ const Cart = () => {
       <BreadCrum />
       <div className="main font-DM flex flex-col gap-y-14">
         <div className="products">
-          <div className="head grid grid-cols-3 sm:grid-cols-5 bg-[#F5F5F3] p-5 font-bold text-primary">
-            <p className=" hidden sm:flex">Product</p>
+          <div className="head grid grc sm:grid-cols-4 xl:grid-cols-5 bg-[#F5F5F3] p-5 font-bold text-primary">
+            <p className=" hidden xl:flex">Product</p>
             <p className=" hidden sm:flex">Price</p>
             <p className=" hidden sm:flex">Quantity</p>
             <p className=" hidden sm:flex">Size</p>
@@ -31,9 +32,12 @@ const Cart = () => {
           </div>
           <div className="list ">
             {items.map((item) => (
-              <div className=" w-full  py-7 flex flex-col  gap-y-1 sm:grid grid-cols-1 grid-rows-3 sm:grid-cols-4 sm:grid-rows-2 xl:grid-cols-5 border border-[#F0F0F0]">
+              <div className=" w-full  py-7 flex flex-col  gap-y-1 sm:grid grid-cols-1 grid-rows-3 sm:grid-cols-4 sm:grid-rows-2 xl:grid-cols-5 border border-[#F0F0F0] px-1 sm:px-3 xl:px-0">
                 <div className="img w-full flex sm:w-auto xl:flex xl:items-center justify-between xl:px-4  sm:col-span-4 xl:col-span-1 sm:grid grid-cols-4">
-                  <div className="close flex items-center justify-center cursor-pointer" onClick={() => dispatch(removeFromCart(item))}>
+                  <div
+                    className="close flex items-center justify-center cursor-pointer"
+                    onClick={() => dispatch(removeFromCart(item))}
+                  >
                     <IoCloseSharp className=" text-xl" />
                   </div>
                   <Image
@@ -41,7 +45,7 @@ const Cart = () => {
                     className="aspect-square col-span-1 "
                     src={item.thumbnail}
                   />
-                  <p className="font-bold text-primary  sm:col-span-2">
+                  <p className="font-bold text-primary w-1/2 sm:w-auto sm:col-span-2">
                     {item.title}
                   </p>
                 </div>
@@ -53,7 +57,7 @@ const Cart = () => {
                 </div>
                 <div className="quantity flex items-center justify-between px-2 sm:px-0 w-full ">
                   <p className="sm:hidden text-xl">Quantity :</p>
-                  <div className="flex  px-5 gap-x-8 items-center font-DM text-secondary ">
+                  <div className="flex  xl:px-5 gap-x-8 items-center font-DM text-secondary ">
                     <span
                       className=" p-1"
                       onClick={() => dispatch(decreaseQuantity(item.id))}
@@ -82,17 +86,17 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          <div className="coupon border  flex flex-col sm:flex-wrap-reverse justify-end sm:px-10 gap-x-5 py-5">
-            <div className="code flex items-center lg:w-2/6  ">
+          <div className="coupon border  flex flex-col sm:flex-row lg:flex-col  lg:flex-wrap-reverse justify-end gap-y-2 px-2 md:px-10 gap-x-5 py-5">
+            <div className="code flex items-center w-full lg:w-2/6  ">
               <input
-                className=" p-2 border outline-none w-3/4"
+                className=" p-2 border outline-none w-3/4 sm:flex-grow md:w-3/4"
                 type="text"
                 name=""
                 id=""
                 placeholder="Coupon Code"
               />
               <div className="font-bold border p-2 bg-primary hover:bg-secondary duration-300 text-white text-sm text-nowrap">
-                Apply coupon{" "}
+                Apply coupon
               </div>
             </div>
             <div className="btn lg:w-1/6  grid sm:place-content-center ">
@@ -122,9 +126,11 @@ const Cart = () => {
               </td>
             </tr>
           </table>
-          <button className="bg-primary text-white py-4 px-6 hover:bg-secondary duration-300">
-            Proceed to Checkout
-          </button>
+          <Link to="/checkout">
+            <button className="bg-primary text-white py-4 px-6 hover:bg-secondary duration-300">
+              Proceed to Checkout
+            </button>
+          </Link>
         </div>
       </div>
     </Container>

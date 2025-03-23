@@ -11,65 +11,71 @@ const SignUp = () => {
   let [firstNameErr, setFirstNameErr] = useState(true);
   let manageFirstName = (element) => {
     setFirstName(element.target.value);
-    setFirstNameErr("");};
+    setFirstNameErr("");
+  };
 
-  let [lastName , setLastName] = useState("")
-  let [lastNameErr , setLastNameErr] = useState(true)
-  let manageLastName = (element) =>{
-    setLastName(element.target.value)
-    setLastNameErr("")}
+  let [lastName, setLastName] = useState("");
+  let [lastNameErr, setLastNameErr] = useState(true);
+  let manageLastName = (element) => {
+    setLastName(element.target.value);
+    setLastNameErr("");
+  };
 
   let [email, setEmail] = useState("");
   let [emailErr, setEmailErr] = useState(true);
   let manageEmail = (element) => {
     setEmail(element.target.value);
-    setEmailErr("");};
+    setEmailErr("");
+  };
 
-  let [inpNumber , setInpNumber] = useState("")
-  let [inpNumberErr , setInpNumberErr] = useState(true)
-  let manageInpNumber= (element)=>{
-    setInpNumber(element.target.value)
-    setInpNumberErr("")
-  }
+  let [inpNumber, setInpNumber] = useState("");
+  let [inpNumberErr, setInpNumberErr] = useState(true);
+  let manageInpNumber = (element) => {
+    setInpNumber(element.target.value);
+    setInpNumberErr("");
+  };
 
-  let [ address1 , setAddress1] = useState("")
-  let [ address1Err , setAddress1Err] = useState(true)
+  let [address1, setAddress1] = useState("");
+  let [address1Err, setAddress1Err] = useState(true);
   let manageAddress1 = (element) => {
     setAddress1(element.target.value);
-    setAddress1Err("");};
+    setAddress1Err("");
+  };
 
-  let [ address2 , setAddress2] = useState("")
-  let [ address2Err , setAddress2Err] = useState(true)
+  let [address2, setAddress2] = useState("");
+  let [address2Err, setAddress2Err] = useState(true);
   let manageAddress2 = (element) => {
     setAddress2(element.target.value);
-    setAddress2Err("");};
+    setAddress2Err("");
+  };
 
-  let [city , setCity] = useState("")
-  let [cityErr, setCityErr] = useState("")
-  let manageCity =(element)=>{
-    setCity(element.target.value)
-    setCityErr("")
-  }
+  let [city, setCity] = useState("");
+  let [cityErr, setCityErr] = useState("");
+  let manageCity = (element) => {
+    setCity(element.target.value);
+    setCityErr("");
+  };
 
-  let [postCode , setPostCode] = useState("")
-  let [postCodeErr , setPostCodeErr] = useState("")
-  let managePostCode =(element)=>{
-    setPostCode(element.target.value)
-    setPostCodeErr("")
-  }
+  let [postCode, setPostCode] = useState("");
+  let [postCodeErr, setPostCodeErr] = useState("");
+  let managePostCode = (element) => {
+    setPostCode(element.target.value);
+    setPostCodeErr("");
+  };
 
   let [inpPassword, setInpPassword] = useState("");
   let [inpPasswordErr, setInpPasswordErr] = useState(true);
   let managePassword = (element) => {
     setInpPassword(element.target.value);
-    setInpPasswordErr("");};
+    setInpPasswordErr("");
+  };
 
   let [repeatPassword, setRepeatPassword] = useState("");
   let [repeatPasswordErr, setRepeatPasswordErr] = useState(true);
   let manageRepeatPassword = (element) => {
     setRepeatPassword(element.target.value);
-    setRepeatPasswordErr("");};
-
+    setRepeatPasswordErr("");
+  };
 
   let manageSubmit = () => {
     if (!firstName) {
@@ -80,8 +86,7 @@ const SignUp = () => {
     }
     if (!email) {
       setEmailErr("Email address is required");
-    }
-    else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       setEmailErr("Please enter a valid email address");
     }
     if (!inpNumber) {
@@ -93,17 +98,22 @@ const SignUp = () => {
     if (!address2) {
       setAddress2Err("Address 2 is required");
     }
-    if (!city){
+    if (!city) {
       setCityErr("City is required");
     }
-    if (!postCode){
-      setPostCodeErr("Post Code is required")
+    if (!postCode) {
+      setPostCodeErr("Post Code is required");
     }
     if (!inpPassword) {
       setInpPasswordErr("Password is required");
-    }
-    else if (!/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(inpPassword)) {
-      setInpPasswordErr("Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long.");
+    } else if (
+      !/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/.test(
+        inpPassword
+      )
+    ) {
+      setInpPasswordErr(
+        "Password must contain one digit from 1 to 9, one lowercase letter, one uppercase letter, one special character, no space, and it must be 8-16 characters long."
+      );
     }
     if (!repeatPassword) {
       setRepeatPasswordErr("Repeat Password is required");
@@ -111,9 +121,7 @@ const SignUp = () => {
     if (inpPassword !== repeatPassword) {
       setRepeatPasswordErr("Passwords do not match");
     }
-
   };
-
 
   let division = [
     "Barishal",
@@ -229,7 +237,7 @@ const SignUp = () => {
           type="text"
           id="LastName"
           inputValue={lastName}
-          onChange ={manageLastName}
+          onChange={manageLastName}
         >
           <p className="text-xs text text-red-500 absolute ">{lastNameErr}</p>
         </Input>
@@ -269,23 +277,24 @@ const SignUp = () => {
           <p className="text-xs text text-red-500 absolute ">{address1Err}</p>
         </Input>
 
-        <Input 
-        label="Address 2" 
-        placeholder="-" 
-        type="text" 
-        id="Address2"
-        inputValue={address2}
-        onChange={manageAddress2} >
-        <p className="text-xs text text-red-500 absolute ">{address2Err}</p>
+        <Input
+          label="Address 2"
+          placeholder="-"
+          type="text"
+          id="Address2"
+          inputValue={address2}
+          onChange={manageAddress2}
+        >
+          <p className="text-xs text text-red-500 absolute ">{address2Err}</p>
         </Input>
 
-        <Input 
-        label="City" 
-        placeholder="Your city" 
-        type="text" 
-        id="city"
-        inputValue={city}
-        onChange={manageCity}
+        <Input
+          label="City"
+          placeholder="Your city"
+          type="text"
+          id="city"
+          inputValue={city}
+          onChange={manageCity}
         >
           <p className="text-xs text text-red-500 absolute ">{cityErr}</p>
         </Input>
@@ -309,12 +318,14 @@ const SignUp = () => {
             Division
           </label>
           <select
-            className="block w-full font-DM text-sm  text-primary  mt-2.5"
+            className="block w-full font-DM text-sm  text-primary outline-none mt-2.5"
             id="Division"
           >
             <option value="PleaseSelect">Please select</option>
-            {division.map((item) => (
-              <option value={item}>{item}</option>
+            {division.map((item, index) => (
+              <option key={index} value={item}>
+                {item}
+              </option>
             ))}
           </select>
         </div>
@@ -327,12 +338,14 @@ const SignUp = () => {
             District
           </label>
           <select
-            className="block w-full font-DM text-sm  text-primary  mt-2.5"
+            className="block w-full font-DM text-sm  text-primary outline-none mt-2.5"
             id="District"
           >
             <option value="PleaseSelect">Please select</option>
-            {district.map((item) => (
-              <option value={item}>{item}</option>
+            {district.map((item, index) => (
+              <option key={index} value={item}>
+                {item}
+              </option>
             ))}
           </select>
         </div>
@@ -341,23 +354,28 @@ const SignUp = () => {
       <Container className=" border-b border-[#D8D8D8] pt-14 pb-[4.375rem] ">
         <TitleHeader className="w-full" headerText="Your Password" />
         <div className="flex flex-wrap gap-y-6 gap-x-10 pt-11">
-          <InpPasswd 
-          label="Password" 
-          placeholder="Password" 
-          id="Password"
-          inputValue={inpPassword}
-          onChange={managePassword} >
-          <p className=" text-[9px] sm:text-xs text text-red-500 absolute top-3/4  sm:top-full">{inpPasswordErr}</p>
+          <InpPasswd
+            label="Password"
+            placeholder="Password"
+            id="Password"
+            inputValue={inpPassword}
+            onChange={managePassword}
+          >
+            <p className=" text-[9px] sm:text-xs text text-red-500 absolute top-3/4  sm:top-full">
+              {inpPasswordErr}
+            </p>
           </InpPasswd>
           <InpPasswd
             label="Repeat Password"
             placeholder="Repeat Password"
             id="RepeatPassword"
-          inputValue={repeatPassword}
-          onChange={manageRepeatPassword}
-        >
-          <p className="text-xs text text-red-500 absolute top-full">{repeatPasswordErr}</p>
-        </InpPasswd>
+            inputValue={repeatPassword}
+            onChange={manageRepeatPassword}
+          >
+            <p className="text-xs text text-red-500 absolute top-full">
+              {repeatPasswordErr}
+            </p>
+          </InpPasswd>
         </div>
       </Container>
       <Container className="font-DM text-sm text-secondary flex flex-col gap-y-6 pt-16 ">
