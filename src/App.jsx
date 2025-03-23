@@ -16,6 +16,8 @@ import SignUp from "./component/page/SignUp";
 import Login from "./component/page/Login";
 import ProductDetails from "./component/page/ProductDetails";
 import Cart from "./component/page/Cart";
+import ErrorPage from "./component/page/ErrorPage";
+import ScrollToTop from "./component/layer/ScrollToTop";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,8 +29,9 @@ const router = createBrowserRouter(
       <Route path="/journal" element={<Journal />}></Route>
       <Route path="/sign/up" element={<SignUp />}></Route>
       <Route path="/login" element={<Login />}></Route>
-      <Route path="/product/details/:id" element={<ProductDetails/>}></Route>
-      <Route path="/cart" element={<Cart/>}></Route>
+      <Route path="/product/details/:id" element={<ProductDetails />}></Route>
+      <Route path="/cart" element={<Cart />}></Route>
+      <Route path="*" element={<ErrorPage />}></Route>
     </Route>
   )
 );
@@ -38,7 +41,9 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <RouterProvider router={router}>
+        <ScrollToTop />
+      </RouterProvider>
     </>
   );
 }

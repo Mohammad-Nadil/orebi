@@ -7,7 +7,8 @@ import DDli from "./layer/DDli";
 import CustomBtn from "./layer/CustomBtn";
 import Image from "./layer/Image";
 import { MdClose } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SearchBar = () => {
   let [show, setShow] = useState(false);
@@ -436,9 +437,12 @@ const SearchBar = () => {
           <div className="cartDDL w-[22.5rem] bg-white absolute right-0 top-full z-10 ">
             <div className="up">
               {cartItems.map((item) => (
-                <div key={item.id} className="item flex items-center justify-between p-5">
+                <div
+                  key={item.id}
+                  className="item flex items-center justify-between p-5"
+                >
                   <div className="img flex items-center gap-x-5 ">
-                    <Image  className=" w-20 h-20 bg-[#D8D8D8]" />
+                    <Image className=" w-20 h-20 bg-[#D8D8D8]" />
                     <div className="text flex flex-col">
                       <h1 className=" font-DM font-bold text-sm text-primary ">
                         {item.title}
@@ -460,7 +464,11 @@ const SearchBar = () => {
                 </p>
               </div>
               <div className="btn flex justify-center gap-x-5">
-                <CustomBtn href="/cart" className=" py-4 " btnText="View Cart" />
+                <CustomBtn
+                  href="/cart"
+                  className=" py-4 "
+                  btnText="View Cart"
+                />
                 <CustomBtn className=" py-4 " btnText="Checkout" />
               </div>
             </div>
@@ -471,37 +479,39 @@ const SearchBar = () => {
       {filterData.length > 0 && (
         <ul className="absolute z-50 left-1/2 -translate-x-1/2 flex flex-col gap-y-3 w-[90vw] sm:w-[37.5rem] 1">
           {filterData.map((item, index) => (
-            <li
-              className="flex items-center bg-[#E5E7EB]/90 rounded-md px-3  gap-x-3"
-              key={index}
-            >
-              <div>
-                <img
-                  className="h-24 w-24 "
-                  src={item.thumbnail}
-                  alt={item.images}
-                />{" "}
-              </div>
-              <div className="flex justify-between w-full">
+            <Link key={index} to={`product/details/${item.id}`}>
+              <li
+                className="flex items-center bg-[#E5E7EB]/90 rounded-md px-3  gap-x-3"
+                key={index}
+              >
                 <div>
-                  <h2 className="font-DM font-semibold text-xl">
-                    {item.title}
-                  </h2>
-                  <p className="font-DM text-lg flex justify-between ">
-                    {item.brand}
-                  </p>
-                  <p className="font-DM font-bold">{item.price} $</p>
+                  <img
+                    className="h-24 w-24 "
+                    src={item.thumbnail}
+                    alt={item.images}
+                  />{" "}
                 </div>
-                <div className="btn hidden sm:flex flex-col gap-3">
-                  <button className="bg-orange-200 font-DM font-bold p-1 rounded-md text-secondary hover:text-primary hover:bg-orange-400 transition-all duration-300 ">
+                <div className="flex justify-between w-full">
+                  <div>
+                    <h2 className="font-DM font-semibold text-xl">
+                      {item.title}
+                    </h2>
+                    <p className="font-DM text-lg flex justify-between ">
+                      {item.brand}
+                    </p>
+                    <p className="font-DM font-bold">{item.price} $</p>
+                  </div>
+                  <div className="btn hidden sm:flex flex-col gap-3">
+                    {/* <button className="bg-orange-200 font-DM font-bold p-1 rounded-md text-secondary hover:text-primary hover:bg-orange-400 transition-all duration-300 ">
                     Add to Wishlist
-                  </button>
-                  <button className="bg-orange-200 font-DM font-bold p-1 rounded-md text-secondary hover:text-primary hover:bg-orange-400 transition-all duration-300 ">
-                    See product
-                  </button>
+                  </button> */}
+                    <button className="bg-orange-200 font-DM font-bold p-1 rounded-md text-secondary hover:text-primary hover:bg-orange-400 transition-all duration-300 ">
+                      See product
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            </Link>
           ))}
         </ul>
       )}

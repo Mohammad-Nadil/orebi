@@ -30,7 +30,6 @@ const Navbar = () => {
             <Li liText="Shop" href="/product" />
             <Li liText="About" href="/about" />
             <Li liText="Contacts" href="/contacts" />
-            <Li liText="Journal" href="/journal" />
           </ul>
 
           <div className="account flex gap-x-3 md:gap-x-10 md:hidden">

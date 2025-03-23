@@ -6,37 +6,44 @@ import VerticalProductItem from "./layer/VerticalProductItem";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../features/cartSlice.js";
+import Loader from "./Loader.jsx";
 
 const Paginate = ({ itemsPerPage }) => {
   const [itemOffset, setItemOffset] = useState(0);
   let list = useSelector((state) => state.view.isListView);
+  let items = useSelector((state) => state.allCart.items);
+  const [loading, setLoading] = useState(true);
 
-  // let items = useSelector((state) => state.allCart.items )
+  // const [items, setItems] = useState([]);
 
-  // console.log(items)
-
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch("https://dummyjson.com/products");
-      const data = await response.json();
-      setItems(data.products);
-    };
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const response = await fetch("https://dummyjson.com/products");
+  //     const data = await response.json();
+  //     setItems(data.products);
+  //   };
+  //   getData();
+  // }, []);
 
   const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = items.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);
+
+  useEffect(() => {
+    if (items.length === 0) {
+      setLoading(true); // Set loading to true when no items are available
+      // Simulate fetching
+      setTimeout(() => {
+        setLoading(false); // Set loading to false after 2 seconds (simulate API call)
+      }, 2000);
+    } else {
+      setLoading(false); // Data is available, no need for loading
+    }
+  }, [items]);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
 
@@ -47,7 +54,7 @@ const Paginate = ({ itemsPerPage }) => {
           list ? "" : "grid"
         } grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-x-2 sm:gap-4 gap-y-10`}
       >
-        <Items currentItems={currentItems} />
+        {loading ? <Loader /> : <Items currentItems={currentItems} />}
       </div>
       <div className=" pt-12 flex justify-between items-center">
         <ReactPaginate

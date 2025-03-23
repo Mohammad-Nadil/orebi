@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../layer/Container.jsx";
 import TitleHeader from "../layer/TitleHeader.jsx";
 import CustomBtn from "../layer/CustomBtn.jsx";
@@ -6,19 +6,47 @@ import { FaAngleDown, FaAngleRight, FaStar } from "react-icons/fa";
 import SizeSelector from "../layer/SizeSelector.jsx";
 import QuantitySelector from "../layer/QuantitySelector.jsx";
 import { Image } from "antd";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
+import Loader from "../Loader.jsx";
 const ProductDetails = () => {
+  const [loading, setLoading] = useState(true);
   let [accordion2, setAccordion2] = useState(false);
   let [accordion, setAccordion] = useState(false);
 
-  let dispatch = useDispatch()
-
+  let dispatch = useDispatch();
+  let navigate = useNavigate();
   let { id } = useParams();
   let products = useSelector((state) =>
     state.allCart.items.find((item) => item.id === Number(id))
   );
+
+ 
+  useEffect(() => {
+    const fetchProductData = async () => {
+      if (!products) {
+        setLoading(true);
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+      }
+
+      if (!products) {
+        navigate("/error"); 
+      } else {
+        setLoading(false);
+      }
+    };
+
+    fetchProductData();
+  }, [products, id, navigate]);
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (!products) {
+    return null;
+  }
 
   return (
     <div>
@@ -33,7 +61,7 @@ const ProductDetails = () => {
           {window.location.pathname.split("/")[1]}{" "}
           {window.location.pathname.split("/")[2]}
         </p>
-        <div className=" w-full   grid grid-cols-2 grid-rows-2 4">
+        <div className=" w-full   grid grid-cols-2 grid-rows-2 sm:grid-cols-4 sm:grid-rows-1">
           <div className="h-full w-full object-cover ">
             <Image
               className="!h-full !w-full aspect-square "
@@ -116,7 +144,12 @@ const ProductDetails = () => {
           </ul>
           <div className="flex gap-x-5 pt-7 pb-7 border- border-[#D8D8D8]">
             {/* <CustomBtn className="py-4 w-48" btnText="Add to Wish List" /> */}
-            <CustomBtn className="py-4 w-48" btnText="Add to Cart" onClick={() => dispatch(addToCart(products))} href={"/cart"} />
+            <CustomBtn
+              className="py-4 w-48"
+              btnText="Add to Cart"
+              onClick={() => dispatch(addToCart(products))}
+              href={"/cart"}
+            />
           </div>
           <ul className=" ">
             <li
@@ -196,7 +229,9 @@ const ProductDetails = () => {
                       )}
                     </p>
                   </div>
-                  <p className="review text-base text-secondary">{review.comment}</p>
+                  <p className="review text-base text-secondary">
+                    {review.comment}
+                  </p>
                 </li>
               ))}
             </ul>
