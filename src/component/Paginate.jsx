@@ -95,7 +95,7 @@ function Items({ currentItems, onClick }) {
               offerEye={true}
               key={index}
               id={item.id}
-              onClick={() => dispatch(addToCart(item))}
+              product={item}
             />
           ) : (
             <ProductItem
@@ -107,7 +107,7 @@ function Items({ currentItems, onClick }) {
               offerEye={true}
               key={index}
               id={item.id}
-              onClick={() => dispatch(addToCart(item))}
+              product={item}
             />
           )
         )}

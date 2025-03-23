@@ -5,10 +5,17 @@ import { FaShoppingCart } from "react-icons/fa";
 import { Image } from "antd";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addToCart } from "../../features/cartSlice";
 
 const Li = ({ liText, icon, onClick }) => {
   return (
-    <li onClick={onClick} className="flex justify-end items-center gap-x-4 ">
+    <li
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick && onClick();
+      }}
+      className="flex justify-end items-center gap-x-4 "
+    >
       <p className="font-DM text-secondary hover:font-bold hover:text-primary hover:cursor-pointer transition-all duration-300 md:text-sm lg:text-base ">
         {liText}
       </p>
@@ -25,8 +32,8 @@ const ProductItem = ({
   brand,
   offer,
   offerEye,
-  onClick,
-  id
+  id,
+  product,
 }) => {
   let [OfferShow, setOfferShow] = useState(offerEye);
 
@@ -70,11 +77,11 @@ const ProductItem = ({
                 : "hidden"
             }`}
           >
-            <ul className="flex flex-col gap-y-3">
-              <Li liText="Add to Wish List" icon={<FaHeart />} />
+            <ul className="flex flex-col gap-y-3 relative z-50">
+              {/* <Li liText="Add to Wish List" icon={<FaHeart />} /> */}
               <Li liText="Compare" icon={<LuRefreshCw />} />
               <Li
-                onClick={onClick}
+                onClick={() => dispatch(addToCart(product))}
                 liText="Add to Cart"
                 icon={<FaShoppingCart />}
               />

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-const QuantitySelector = () => {
+const QuantitySelector = ( ) => {
   let [quantity, setQuantity] = useState(1);
 
   return (

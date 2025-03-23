@@ -66,7 +66,7 @@ const SpecialOffers = () => {
             offerEye={true}
             key={i}
             id={item.id}
-            onClick={()=> dispatch(addToCart(item))}
+            product={item}
           />
         ))}
       </Container>

@@ -133,7 +133,7 @@ const Arrivals = () => {
                   key={i}
                   id={item.id}
                   className="!w-full px-1 md:px-5"
-                  onClick={() => dispatch(addToCart(item))}
+                  product={item}
                 />
               ))}
           </Slider>

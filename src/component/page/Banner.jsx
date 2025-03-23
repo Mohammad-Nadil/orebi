@@ -14,7 +14,6 @@ const Banner = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    fade: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
