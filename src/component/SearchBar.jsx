@@ -129,7 +129,7 @@ const SearchBar = () => {
                   className="item flex items-center justify-between p-5"
                 >
                   <div className="img flex items-center gap-x-5 ">
-                    <Image className=" w-20 h-20 bg-[#D8D8D8]" />
+                    <Image src={item.thumbnail}  className=" w-20 h-20" />
                     <div className="text flex flex-col">
                       <h1 className=" font-DM font-bold text-sm text-primary ">
                         {item.title}
