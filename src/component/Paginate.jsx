@@ -8,10 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../features/cartSlice.js";
 import Loader from "./Loader.jsx";
 
-const Paginate = ({ itemsPerPage }) => {
+const Paginate = ({ filteredProducts, itemsPerPage }) => {
   const [itemOffset, setItemOffset] = useState(0);
   let list = useSelector((state) => state.view.isListView);
-  let items = useSelector((state) => state.allCart.items);
+  // let items = useSelector((state) => state.allCart.items);
   const [loading, setLoading] = useState(true);
 
   // const [items, setItems] = useState([]);
@@ -26,24 +26,23 @@ const Paginate = ({ itemsPerPage }) => {
   // }, []);
 
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = items.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(items.length / itemsPerPage);
+  const currentItems = filteredProducts.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
 
   useEffect(() => {
-    if (items.length === 0) {
+    if (filteredProducts.length === 0) {
       setLoading(true); // Set loading to true when no items are available
-      // Simulate fetching
       setTimeout(() => {
         setLoading(false); // Set loading to false after 2 seconds (simulate API call)
       }, 2000);
     } else {
       setLoading(false); // Data is available, no need for loading
     }
-  }, [items]);
+  }, [filteredProducts]);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
+    const newOffset = (event.selected * itemsPerPage) % filteredProducts.length;
     setItemOffset(newOffset);
   };
 
@@ -76,8 +75,10 @@ const Paginate = ({ itemsPerPage }) => {
         />
         <p className="text-xs sm:text-sm">
           {`Products from ${itemOffset + 1} to ${
-            endOffset > items.length ? items.length : endOffset
-          } of ${items.length}`}
+            endOffset > filteredProducts.length
+              ? filteredProducts.length
+              : endOffset
+          } of ${filteredProducts.length}`}
         </p>
       </div>
     </>

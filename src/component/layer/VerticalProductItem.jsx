@@ -38,7 +38,7 @@ const VerticalProductItem = ({
 
   return (
     <>
-      <Link to={`/details/${id}`}>
+      <Link to={`details/${id}`}>
         <div className={`w-full grid grid-cols-8 h-44 ${className}`}>
           <div className="image overflow-hidden grid content-center h-44 relative group ">
             <button
@@ -64,7 +64,7 @@ const VerticalProductItem = ({
           </div>
           <div className=" col-span-2 p-6 flex flex-col  justify-between   transition-all duration-300">
             <ul className="flex flex-col gap-y-3">
-              {/* <Li liText="Add to Wish List" icon={<FaHeart />} /> */}
+              <Li liText="Add to Wish List" icon={<FaHeart />} />
               <Li liText="Compare" icon={<LuRefreshCw />} />
               <Li
                 liText="Add to Cart"

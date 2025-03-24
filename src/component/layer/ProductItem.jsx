@@ -55,10 +55,10 @@ const ProductItem = ({
   return (
     <div className={` w-full sm:w-auto ${className}`}>
       <Link to={`/product/details/${id}`}>
-        <div className="image w-full h-5/6 aspect-square relative group">
+        <div className="image w-full h-5/6 aspect-square relative !z-40 group">
           <button
-            className={` absolute top-4 left-4 font-DM font-bold text-[10px] sm:text-xs lg:text-sm text-white bg-black ${
-              OfferShow ? " py-1 px-3 lg:py-2 lg:px-8" : "p-0"
+            className={` absolute  sm:top-4 left-4 font-DM font-bold text-[8px] sm:text-xs lg:text-sm text-white bg-black ! ${
+              OfferShow ? " py-0.5 px-1 lg:py-2 lg:px-8 opacity-50 sm:opacity-100 !z-40" : "p-0"
             } `}
           >
             {offer} % off
